@@ -4,6 +4,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Prep3 World!");
+        List<int> numbers = new List<int>();
+
+        int usedrnumber = -1;
+        while (usedrnumber != 0)
+        {
+            Console.WriteLine("Enter a number (0 to quit): ");
+
+            string response = 
     }
 }
