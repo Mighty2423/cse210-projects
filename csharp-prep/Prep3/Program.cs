@@ -4,13 +4,38 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<int> numbers = new List<int>();
+        //ask the user for their number
+        Console.WriteLine("What is the magic number ? ");
+        int magicNumber = int.Parse(Console.ReadLine());
 
-        int usedrnumber = -1;
-        while (usedrnumber != 0)
+
+        //ask the user for their guess
+        Console.WriteLine("What is your guess ? ");
+        int guess = int.Parse(Console.ReadLine());
+
+        //check if the guess is correct
+        if (guess == magicNumber)
         {
-            Console.WriteLine("Enter a number (0 to quit): ");
+            Console.WriteLine("You guessed it right!");
+        }
+        else
+        {
+            Console.WriteLine("You guessed it wrong!");
+        }
 
-            string response = 
+        //check if the guess is too high
+        if (guess > magicNumber)
+        {
+            Console.WriteLine("Your guess is too high!");
+        }
+
+        //check if the guess is too low
+        if (guess < magicNumber)
+        {
+            Console.WriteLine("Your guess is too low!");
+        }
+
+        //loop
+
     }
 }
