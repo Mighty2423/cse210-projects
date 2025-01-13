@@ -4,38 +4,36 @@ class Program
 {
     static void Main(string[] args)
     {
-        //ask the user for their number
-        Console.WriteLine("What is the magic number ? ");
+        // Ask the user for the magic number
+        Console.WriteLine("What is the magic number? ");
         int magicNumber = int.Parse(Console.ReadLine());
 
+        int guess = -1; // Initialize the guess to a value that is not equal to the magic number
 
-        //ask the user for their guess
-        Console.WriteLine("What is your guess ? ");
-        int guess = int.Parse(Console.ReadLine());
-
-        //check if the guess is correct
-        if (guess == magicNumber)
+        // Loop until the guess matches the magic number
+        while (guess != magicNumber)
         {
-            Console.WriteLine("You guessed it right!");
-        }
-        else
-        {
-            Console.WriteLine("You guessed it wrong!");
-        }
+            // Ask the user for their guess
+            Console.WriteLine("What is your guess? ");
+            guess = int.Parse(Console.ReadLine());
 
-        //check if the guess is too high
-        if (guess > magicNumber)
-        {
-            Console.WriteLine("Your guess is too high!");
+            // Check if the guess is correct
+            if (guess == magicNumber)
+            {
+                Console.WriteLine("You guessed it right!");
+            }
+            else
+            {
+                // Provide feedback if the guess is too high or too low
+                if (guess > magicNumber)
+                {
+                    Console.WriteLine("Your guess is too high!");
+                }
+                else if (guess < magicNumber)
+                {
+                    Console.WriteLine("Your guess is too low!");
+                }
+            }
         }
-
-        //check if the guess is too low
-        if (guess < magicNumber)
-        {
-            Console.WriteLine("Your guess is too low!");
-        }
-
-        //loop
-
     }
 }
