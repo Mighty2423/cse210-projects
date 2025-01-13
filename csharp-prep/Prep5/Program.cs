@@ -26,6 +26,29 @@ class Program
         Console.WriteLine("Welcome to the Program!");
     }
 
-    
+    // Function to prompt for and retrieve the user's name
+    static string PromptUserName()
+    {
+        Console.Write("Enter your name: ");
+        return Console.ReadLine();
+    }
 
+    // Function to prompt for and retrieve the user's favorite number
+    static int PromptUserNumber()
+    {
+        Console.Write("Enter your favorite number: ");
+        return int.Parse(Console.ReadLine());
+    }
+
+    // Function to square the number
+    static int SquareNumber(int number)
+    {
+        return number * number;
+    }
+
+    // Function to display the result
+    static void DisplayResult(string userName, int squaredNumber)
+    {
+        Console.WriteLine($"Hello, {userName}! Your favorite number squared is {squaredNumber}.");
+    }
 }
