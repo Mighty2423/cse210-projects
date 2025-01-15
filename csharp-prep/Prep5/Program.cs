@@ -23,7 +23,7 @@ class Program
     // Function to display the welcome message
     static void DisplayWelcome()
     {
-        Console.WriteLine("Welcome to the Program!");
+        Console.WriteLine("Welcome to the Program!dd");
     }
 
     // Function to prompt for and retrieve the user's name
