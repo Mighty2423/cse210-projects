@@ -50,5 +50,5 @@ class Program
     static void DisplayResult(string userName, int squaredNumber)
     {
         Console.WriteLine($"Hello, {userName}! Your favorite number squared is {squaredNumber}.");
-    }
+    }q
 }
