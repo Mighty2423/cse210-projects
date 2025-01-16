@@ -5,7 +5,7 @@ class Program
     static void Main(string[] args)
     {
         // grade prompt
-        Console.WriteLine("Enter your numerical grade: ");
+        Console.WriteLine("Enter your numerical grade:  ");
         string input = Console.ReadLine();
         int grade;
 
