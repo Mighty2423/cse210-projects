@@ -29,7 +29,7 @@ class Program
     // Function to prompt for and retrieve the user's name
     static string PromptUserName()
     {
-        Console.Write("Enter your name: ");
+        Console.Write("Enter your name:  ");
         return Console.ReadLine();
     }
 
