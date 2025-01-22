@@ -21,6 +21,13 @@ class Program
             _endyear = 2024
         };
 
+        Job job3 = new Job
+        {
+            _jobTitle = "data engineer",
+            _company = "Google",
+            _startYear = 2024,
+            _endyear = 2026
+        };
         // Create resume instance
         Resume myResume = new Resume
         {
@@ -30,6 +37,7 @@ class Program
         // Add jobs to the resume
         myResume._jobs.Add(job1);
         myResume._jobs.Add(job2);
+        myResume._jobs.Add(job3);
 
         // Display the resume
         myResume.display();
