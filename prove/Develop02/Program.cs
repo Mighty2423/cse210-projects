@@ -5,14 +5,14 @@ namespace JournalProgram
     // Program Class: Handles the main menu and user interaction
     public class Program
     {
-        private static bool isRunning;
+        private static bool _isRunning;
 
         static void Main(string[] args)
         {
             Journal journal = new Journal();
-            
+            _isRunning = true;
 
-            while (true) 
+            while (_isRunning) 
             {
                 Console.WriteLine("\nJournal Program");
                 Console.WriteLine("1. Write Entry");
@@ -38,8 +38,9 @@ namespace JournalProgram
                     case "4":
                         journal.SaveEntries();
                         break;
+
                     case "5":
-                        "5" = false;
+                        _isRunning = false;
                         Console.WriteLine("Goodbye!");
                         break;
                     default:

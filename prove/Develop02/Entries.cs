@@ -1,8 +1,18 @@
 using System;
+using System.Collections.Generic;
+
 // Entry Class: Represents an individual journal entry
-public class Entry
+class Entry{
+
+    public string _date;
+
+    public string _content;
+    
+    public string _prompt = Prompt.GetPrompt(); 
+
+public void display()
 {
-    public DateTime Date { get; set; }
-    public string Content { get; set; }
+    Console.WriteLine($"{_date} {_content} {_prompt}");
 }
 
+}
