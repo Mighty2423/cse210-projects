@@ -6,27 +6,38 @@ public class Journal
 {
     //write the entry
     public void WriteEntry()
-    {   
-        Console.WriteLine("Enter the date of the entry: ");
-        string date = Console.ReadLine();
-        Console.WriteLine("Enter the content of the entry: ");
-        string content = Console.ReadLine();
-        Console.WriteLine("Enter the prompt of the entry: ");
-        string prompt = Console.ReadLine();
-        Entry entry = new Entry;
-        }
+    {
+     
+    }
      //display the entries
     public void DisplayEntries()
     {
-
+        Repository repository = new Repository();
+        List<Entry> entries = repository.GetEntries();
+            if (entries.Count == 0)
+            {
+                Console.WriteLine("No entries found.");
+            }
+            else
+            {
+                foreach (Entry _entry in entries)
+                {
+                    Console.WriteLine($"[{_entry._date}] {_entry._content}");
+                }
+            }
     }
     //load the entries
     public void LoadEntries()
     {
-    //save the entries
+        Repository repository = new Repository();
+        repository.LoadEntries();
+        Console.WriteLine("Entries loadeing.");
+        
     }
     public void SaveEntries()
     {
-        
+        Repository repository = new Repository();
+        repository.SaveEntries();
+        Console.WriteLine("Entries saved.");
     }
 }

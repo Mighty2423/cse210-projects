@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 // Entry Class: Represents an individual journal entry
-class Entry{
+public class Entry{
 
     public string _date;
 

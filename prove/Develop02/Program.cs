@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 namespace JournalProgram
 {
     // Program Class: Handles the main menu and user interaction
