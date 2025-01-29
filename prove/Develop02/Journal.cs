@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 // Journal Class: Manages journal entries and operations
 public class Journal
@@ -21,7 +22,7 @@ public class Journal
     {
         Repository repository = new Repository();
         List<Entry> entries = repository.GetEntries();
-            if (entries.Count == 0)
+            if (entries.Count == 0) 
             {
                 Console.WriteLine("No entries found.");
             }
@@ -29,7 +30,7 @@ public class Journal
             {
                 foreach (Entry _entry in entries)
                 {
-                    Console.WriteLine($"[{_entry._date}] {_entry._content} {_entry._prompt}");
+                    Console.WriteLine($"[{_entry._date}]\n{_entry._content}\n{_entry._prompt}");
                 }
             }
     }
