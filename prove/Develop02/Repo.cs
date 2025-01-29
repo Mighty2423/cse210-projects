@@ -6,6 +6,7 @@ using Microsoft.VisualBasic;
 // Repository Class: Handles data storage and retrieval 
 public class Repository
 {
+    //not but will figure out
     // List of entries
     private List<Entry> _entries = new List<Entry>();
         public void AddEntry(Entry entry)
