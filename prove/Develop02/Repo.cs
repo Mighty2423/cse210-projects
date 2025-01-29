@@ -16,7 +16,8 @@ public class Repository
         {
             return _entries;
         }
-    
+
+        //need to fix still
         // Load the entries from a file
         public void LoadEntries()
         {
@@ -39,6 +40,7 @@ public class Repository
             }
         }
 
+        //saves date and time but still need to pull prompts and contentup and save them too
         // Save the entries to a file
         public void SaveEntries()
         {
@@ -49,7 +51,9 @@ public class Repository
     {
         foreach (Entry _entry in _entries)
         {
+            writer.WriteLine(_entry._date);
             writer.WriteLine(_entry._prompt);
+            writer.WriteLine(_entry._content);
         }
         writer.WriteLine(DateTime.Now.ToString());
     }

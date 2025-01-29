@@ -12,7 +12,7 @@ public class Entry{
 
 public void display()
 {
-    Console.WriteLine($"{_date} {_content} {_prompt}");
+    Console.WriteLine($"{_date}\n{_content}\n{_prompt}");
 }
 
 }

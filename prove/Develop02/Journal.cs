@@ -9,12 +9,14 @@ public class Journal
     public void WriteEntry()
     {
         Entry entry = new Entry();
-        Console.WriteLine("Enter the date:");
+        Console.WriteLine("Press Enter to input today the date:");
         entry._date = Console.ReadLine();
-        Console.WriteLine("Enter the content:");
+        Console.WriteLine(entry._prompt + "-Enter the content:");
         entry._prompt = Console.ReadLine();
         entry.display();
         Repository repository = new Repository();
+        repository.AddEntry(entry);
+        repository.AddEntry(entry);
         repository.AddEntry(entry);
     }
      //display the entries
