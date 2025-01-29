@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 // Journal Class: Manages journal entries and operations
 public class Journal
 {
+    //works do not touch
     //write the entry
     public void WriteEntry()
     {
@@ -19,6 +20,7 @@ public class Journal
         repository.AddEntry(entry);
         repository.AddEntry(entry);
     }
+     //fix with class and possibly here
      //display the entries
     public void DisplayEntries()
     {
@@ -36,6 +38,7 @@ public class Journal
                 }
             }
     }
+    //works do not touch
     //load the entries
     public void LoadEntries()
     {
@@ -46,6 +49,7 @@ public class Journal
         
         
     }
+    //works do not touch
     //save the entries
     public void SaveEntries()
     {

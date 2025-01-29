@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Microsoft.VisualBasic;
 
 // Repository Class: Handles data storage and retrieval 
 public class Repository
@@ -47,7 +48,7 @@ public class Repository
             {
     string filePath = @"C:\Users\alton\source\cse210-projects\prove\Develop02\example.txt";
     // Create or append to the file
-    using (StreamWriter writer = new StreamWriter(filePath, append: true))
+    using (StreamWriter writer = new (filePath, append: true))
     {
         foreach (Entry _entry in _entries)
         {
@@ -58,8 +59,9 @@ public class Repository
         writer.WriteLine(DateTime.Now.ToString());
     }
     
+    // works do not touch
     //inform the user that the content was saved to
     Console.WriteLine($"Content appended to {filePath}");
-        }
+            }
 }
 }
