@@ -16,8 +16,11 @@ public class Prompt
         };
         return prompts[new Random().Next(prompts.Length)];
     }
-    public void display()
+
+    // Display the prompt
+    public static void Display()
     {
-        Console.WriteLine($"{GetPrompt()}");
+        Console.WriteLine(GetPrompt());
     }
 }
+

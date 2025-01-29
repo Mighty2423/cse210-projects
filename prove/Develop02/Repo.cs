@@ -6,15 +6,15 @@ using System.Runtime.CompilerServices;
 public class Repository
 {
     // List of entries
-    private List<Entry> entries = new List<Entry>();
+    private List<Entry> _entries = new List<Entry>();
         public void AddEntry(Entry entry)
         {
-            entries.Add(entry);
+            _entries.Add(entry);
         }
 
         public List<Entry> GetEntries()
         {
-            return entries;
+            return _entries;
         }
     
         // Load the entries from a file
@@ -47,7 +47,7 @@ public class Repository
     // Create or append to the file
     using (StreamWriter writer = new StreamWriter(filePath, append: true))
     {
-        foreach (Entry _entry in entries)
+        foreach (Entry _entry in _entries)
         {
             writer.WriteLine(_entry._prompt);
         }
