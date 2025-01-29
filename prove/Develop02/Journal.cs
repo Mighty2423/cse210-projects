@@ -5,19 +5,17 @@ using System.Security.Cryptography;
 // Journal Class: Manages journal entries and operations
 public class Journal
 {
-    //works do not touch
+    //works do not touch but may need too
     //write the entry
     public void WriteEntry()
     {
         Entry entry = new Entry();
-        Console.WriteLine("Press Enter to input today the date:");
+        Console.WriteLine("Press Enter to input today the date and time:");
         entry._date = Console.ReadLine();
         Console.WriteLine(entry._prompt + "-Enter the content:");
         entry._prompt = Console.ReadLine();
         entry.display();
         Repository repository = new Repository();
-        repository.AddEntry(entry);
-        repository.AddEntry(entry);
         repository.AddEntry(entry);
     }
      //fix with class and possibly here

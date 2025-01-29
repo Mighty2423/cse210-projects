@@ -47,22 +47,22 @@ public class Repository
         public void SaveEntries()
         {
             {
-    string filePath = @"C:\Users\alton\source\cse210-projects\prove\Develop02\example.txt";
-    // Create or append to the file
-    using (StreamWriter writer = new (filePath, append: true))
-    {
-        foreach (Entry _entry in _entries)
+        string filePath = @"C:\Users\alton\source\cse210-projects\prove\Develop02\example.txt";
+        // Create or append to the file
+        using (StreamWriter writer = new (filePath, append: true))
         {
-            writer.WriteLine(_entry._date);
-            writer.WriteLine(_entry._prompt);
-            writer.WriteLine(_entry._content);
+            foreach (Entry _entry in _entries)
+            {
+                writer.WriteLine(_entry._date);
+                writer.WriteLine(_entry._prompt);
+                writer.WriteLine(_entry._content);
+            }
+            writer.WriteLine(DateTime.Now.ToString());
         }
-        writer.WriteLine(DateTime.Now.ToString());
-    }
     
     // works do not touch
     //inform the user that the content was saved to
     Console.WriteLine($"Content appended to {filePath}");
             }
-}
+    }
 }
