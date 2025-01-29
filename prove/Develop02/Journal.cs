@@ -7,7 +7,14 @@ public class Journal
     //write the entry
     public void WriteEntry()
     {
-     
+        Entry entry = new Entry();
+        Console.WriteLine("Enter the date:");
+        entry._date = Console.ReadLine();
+        Console.WriteLine("Enter the content:");
+        entry._prompt = Console.ReadLine();
+        entry.display();
+        Repository repository = new Repository();
+        repository.AddEntry(entry);
     }
      //display the entries
     public void DisplayEntries()
@@ -22,7 +29,7 @@ public class Journal
             {
                 foreach (Entry _entry in entries)
                 {
-                    Console.WriteLine($"[{_entry._date}] {_entry._content}");
+                    Console.WriteLine($"[{_entry._date}] {_entry._content} {_entry._prompt}");
                 }
             }
     }
@@ -30,10 +37,13 @@ public class Journal
     public void LoadEntries()
     {
         Repository repository = new Repository();
+        Console.WriteLine("Entries loading.");
+        Console.WriteLine("Entries loaded.");
         repository.LoadEntries();
-        Console.WriteLine("Entries loadeing.");
+        
         
     }
+    //save the entries
     public void SaveEntries()
     {
         Repository repository = new Repository();

@@ -3,7 +3,7 @@ using System;
 // Repository Class: Handles data storage and retrieval
 public class Prompt
 {
-
+    public string _prompt;
     public static string GetPrompt()
     {
         string[] prompts = new string[]
