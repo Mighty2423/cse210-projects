@@ -9,7 +9,7 @@ public class Journal
     private Prompt _prompt = new Prompt();
     //works do not touch but may need too
     //write the entry
-    public void WriteEntry()
+    public Entry WriteEntry()
     {
         Entry entry = new Entry();
         entry._date = DateTime.Now.ToString();
@@ -17,9 +17,8 @@ public class Journal
         Console.WriteLine(entry._prompt);
         Console.WriteLine("Enter the content:");
         entry._content = Console.ReadLine();
-        Repository repository = new Repository();
-        repository.AddEntry(entry);
         Console.WriteLine("Entry saved.");
+        return entry;
     }
      //fix with class and possibly here
      //display the entries
@@ -28,7 +27,7 @@ public class Journal
         List<Entry> entries = _repository.GetEntries();
         if (entries.Count == 0)
         {
-            Console.WriteLine("No entries found.");
+            Console.WriteLine("No entries found. Try adding some!");
         }
         else
         {
@@ -36,30 +35,30 @@ public class Journal
             {
                 entry.Display();
                 Console.WriteLine();
-                }
             }
+        }
+
     }
     
     //works do not touch
     //load the entries
     public void LoadEntries()
     {
-        Repository repository = new Repository();
         Console.WriteLine("Entries loading.");
         Console.WriteLine("Entries loaded.");
-        string filePath = "path/to/your/file.txt"; // specify the file path
-        repository.LoadEntries(filePath);
+        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "example.txt");
+        _repository.LoadEntries(filePath);
 
         
         
     }
     //works do not touch
     //save the entries
-    public void SaveEntries()
+    public void SaveEntries(Entry entry)
     {
-        Repository repository = new Repository();
-        string filePath = @"C:\Users\alton\source\cse210-projects\prove\Develop02\example.txt"; // specify the file path
-        repository.SaveEntries(filePath);
+        _repository.AddEntry(entry);
+        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "example.txt");
+        _repository.SaveEntries(filePath);
         Console.WriteLine("Entries saved.");
-    }
+}
 }

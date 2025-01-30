@@ -35,11 +35,12 @@ public class Repository
                 while ((line = reader.ReadLine()) != null)
                 {
                     Entry entry = new Entry();
-                    entry._date = reader.ReadLine();
-                    entry._prompt = reader.ReadLine();
-                    entry._content = reader.ReadLine();
+                    entry._date = line;  // First line is the date
+                    entry._prompt = reader.ReadLine();  // Second line is the prompt
+                    entry._content = reader.ReadLine();  // Third line is the content
                     _entries.Add(entry);
                 }
+
             }
             Console.WriteLine("Entries loaded from " + filePath);
         }

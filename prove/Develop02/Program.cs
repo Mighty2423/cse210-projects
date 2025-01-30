@@ -36,7 +36,7 @@ namespace JournalProgram
                         journal.LoadEntries();
                         break;
                     case "4":
-                        journal.SaveEntries();
+                        journal.SaveEntries(new Entry());
                         break;
 
                     case "5":
