@@ -21,35 +21,45 @@ public class Repository
             return _entries;
         }
 
-        
-        
-        //need to fix still
-        // Load the entries from a file
-        public void LoadEntries(string filePath)
-        {
-            if (File.Exists(filePath))
+
+
+    //need to fix still
+    // Load the entries from a file
+    public void LoadEntries(string filePath)
+    {
+        if (File.Exists(filePath))
         {
             using (StreamReader reader = new StreamReader(filePath))
             {
-                _entries.Clear(); // Clear existing entries before loading new ones
-                string line;
-                while ((line = reader.ReadLine()) != null)
+                _entries.Clear();
+                if (reader.Peek() == -1)
                 {
-                    Entry entry = new Entry();
-                    entry._date = line;  // First line is the date
-                    entry._prompt = reader.ReadLine();  // Second line is the prompt
-                    entry._content = reader.ReadLine();  // Third line is the content
-                    _entries.Add(entry);
+                    Console.WriteLine("File is empty. No entries loaded.");
+                    return;
                 }
 
+                while (!reader.EndOfStream)
+                {
+                    Entry entry = new Entry();
+                    entry._date = reader.ReadLine();
+                    entry._prompt = reader.ReadLine();
+                    entry._content = reader.ReadLine();
+
+                    if (entry._date != null && entry._prompt != null && entry._content != null)
+                    {
+                        _entries.Add(entry);
+                    }
+                }
             }
-            Console.WriteLine("Entries loaded from " + filePath);
+
+            Console.WriteLine($"Loaded {_entries.Count} entries from {filePath}");
         }
         else
         {
             Console.WriteLine("File not found.");
         }
     }
+
 
     // Save the entries to a file
     public void SaveEntries(string filePath)

@@ -46,20 +46,40 @@ public class Journal
     //load the entries
     public void LoadEntries()
     {
-        Console.WriteLine("Entries loading.");
-        Console.WriteLine("Entries loaded.");
-        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "example.txt");
-        _repository.LoadEntries(filePath);
+        Console.Write("Enter the file name to load entries (e.g., journal1.txt): ");
+        string fileName = Console.ReadLine();
 
-        
-        
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            Console.WriteLine("Invalid file name. Using default 'example.txt'.");
+            fileName = "example.txt";
+        }
+
+        if (!fileName.EndsWith(".txt"))
+        {
+            fileName += ".txt";
+        }
     }
     //works do not touch
     //save the entries
     public void SaveEntries(Entry entry)
     {
-        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "example.txt");
+        Console.Write("Enter the file name to save entries (e.g., journal1): ");
+        string fileName = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            Console.WriteLine("Invalid file name. Using default 'example.txt'.");
+            fileName = "example.txt";
+        }
+
+        if (!fileName.EndsWith(".txt"))
+        {
+            fileName += ".txt";  // Ensure it has a .txt extension
+        }
+
+        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         _repository.SaveEntries(filePath);
-        Console.WriteLine("Entries saved.");
-}
+        Console.WriteLine($"Entries saved to {filePath}");
+    }
 }
