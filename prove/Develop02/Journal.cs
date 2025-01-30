@@ -17,6 +17,7 @@ public class Journal
         Console.WriteLine(entry._prompt);
         Console.WriteLine("Enter the content:");
         entry._content = Console.ReadLine();
+        _repository.AddEntry(entry);
         Console.WriteLine("Entry saved.");
         return entry;
     }
@@ -38,6 +39,7 @@ public class Journal
             }
         }
 
+
     }
     
     //works do not touch
@@ -56,7 +58,6 @@ public class Journal
     //save the entries
     public void SaveEntries(Entry entry)
     {
-        _repository.AddEntry(entry);
         string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "example.txt");
         _repository.SaveEntries(filePath);
         Console.WriteLine("Entries saved.");
