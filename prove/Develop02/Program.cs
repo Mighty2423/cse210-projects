@@ -36,9 +36,8 @@ namespace JournalProgram
                         journal.LoadEntries();
                         break;
                     case "4":
-                        Entry entry = new Entry(); // Create an Entry object
-                        journal.SaveEntries(entry);
-                        break;
+                    journal.SaveEntries();
+                    break;
 
                     case "5":
                         _isRunning = false;
