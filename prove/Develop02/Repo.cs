@@ -2,7 +2,8 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 
-// Repository Class: Handles data storage and retrieval 
+
+// Repository Class: Handles data storage and retrieval
 public class Repository
 {
     //not but will figure out
@@ -23,10 +24,10 @@ public class Repository
 
 
 
-    //need to fix still
     // Load the entries from a file
     public void LoadEntries(string filePath)
     {
+        // Check if the file exists
         if (File.Exists(filePath))
         {
             using (StreamReader reader = new StreamReader(filePath))
@@ -34,10 +35,11 @@ public class Repository
                 _entries.Clear();
                 if (reader.Peek() == -1)
                 {
+                    // File is empty
                     Console.WriteLine("File is empty. No entries loaded.");
                     return;
                 }
-
+                // Read the file line by line
                 while (!reader.EndOfStream)
                 {
                     Entry entry = new Entry();
@@ -51,9 +53,10 @@ public class Repository
                     }
                 }
             }
-
+            // show how many entries are loaded
             Console.WriteLine($"Loaded {_entries.Count} entries from {filePath}");
         }
+        //if file not found
         else
         {
             Console.WriteLine("File not found.");
@@ -64,7 +67,7 @@ public class Repository
     // Save the entries to a file
     public void SaveEntries(string filePath)
     {
-        using (StreamWriter writer = new StreamWriter(filePath))
+        using (StreamWriter writer = new StreamWriter(filePath,true))
         {
             foreach (Entry entry in _entries)
             {
@@ -73,7 +76,9 @@ public class Repository
                 writer.WriteLine(entry._content);
             }
         }
+        // show enties are saved where
         Console.WriteLine("Entries saved to " + filePath);
+        //Clear the list of entries
+        _entries.Clear();
     }
-    
 }

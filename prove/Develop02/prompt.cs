@@ -4,9 +4,12 @@ using System;
 // Repository Class: Handles data storage and retrieval
 public class Prompt
 {
+    // Prompt properties
     public string _prompt;
+    //get the prompt
     public static string GetPrompt()
     {
+        // Array of prompts
         string[] prompts = new string[]
         {
             "How are you feeling today?",
@@ -18,7 +21,7 @@ public class Prompt
         return prompts[new Random().Next(prompts.Length)];
     }
 
-    // Display the prompt
+    // works do not touch
     public static void Display()
     {
         Console.WriteLine(GetPrompt());

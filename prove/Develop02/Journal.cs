@@ -21,7 +21,7 @@ public class Journal
         Console.WriteLine("Entry saved.");
         return entry;
     }
-     //fix with class and possibly here
+     //works do not touch
      //display the entries
     public void DisplayEntries()
     {

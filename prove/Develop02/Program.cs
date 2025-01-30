@@ -17,8 +17,8 @@ namespace JournalProgram
             {
                 Console.WriteLine("\nJournal Program");
                 Console.WriteLine("1. Write Entry");
-                Console.WriteLine("2. Display Entries");
-                Console.WriteLine("3. Load Entries");
+                Console.WriteLine("2. Display Entries from file");
+                Console.WriteLine("3. Load file");
                 Console.WriteLine("4. Save Entries");
                 Console.WriteLine("5. Quit");
                 Console.Write("Select an option: ");

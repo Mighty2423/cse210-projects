@@ -11,6 +11,7 @@ public class Entry{
     
     public string _content; 
 
+    //works do not touch
 public void Display()
 
     {
