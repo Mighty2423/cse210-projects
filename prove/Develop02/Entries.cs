@@ -7,13 +7,18 @@ public class Entry{
 
     public string _date;
 
-    public string _content;
+    public string _prompt = Prompt.GetPrompt();
     
-    public string _prompt = Prompt.GetPrompt(); 
+    public string _content; 
 
-public void display()
-{
-    Console.WriteLine($"{_date}\n{_content}\n{_prompt}");
-}
+public void Display()
 
+    {
+
+        Console.WriteLine($"Date: {_date}");
+
+        Console.WriteLine($"Prompt: {_prompt}");
+
+        Console.WriteLine($"Content: {_content}");
+    }
 }

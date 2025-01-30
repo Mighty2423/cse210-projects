@@ -22,7 +22,6 @@ namespace JournalProgram
                 Console.WriteLine("4. Save Entries");
                 Console.WriteLine("5. Quit");
                 Console.Write("Select an option: ");
-
                 string choice = Console.ReadLine();
 
                 switch (choice)
@@ -52,3 +51,4 @@ namespace JournalProgram
         }
     }
 }
+

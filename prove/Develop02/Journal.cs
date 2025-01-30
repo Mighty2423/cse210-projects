@@ -5,37 +5,41 @@ using System.Security.Cryptography;
 // Journal Class: Manages journal entries and operations
 public class Journal
 {
+    private Repository _repository = new Repository();
+    private Prompt _prompt = new Prompt();
     //works do not touch but may need too
     //write the entry
     public void WriteEntry()
     {
         Entry entry = new Entry();
-        Console.WriteLine("Press Enter to input today the date and time:");
-        entry._date = Console.ReadLine();
-        Console.WriteLine(entry._prompt + "-Enter the content:");
-        entry._prompt = Console.ReadLine();
-        entry.display();
+        entry._date = DateTime.Now.ToString();
+        entry._prompt = Prompt.GetPrompt();
+        Console.WriteLine(entry._prompt);
+        Console.WriteLine("Enter the content:");
+        entry._content = Console.ReadLine();
         Repository repository = new Repository();
         repository.AddEntry(entry);
+        Console.WriteLine("Entry saved.");
     }
      //fix with class and possibly here
      //display the entries
     public void DisplayEntries()
     {
-        Repository repository = new Repository();
-        List<Entry> entries = repository.GetEntries();
-            if (entries.Count == 0) 
+        List<Entry> entries = _repository.GetEntries();
+        if (entries.Count == 0)
+        {
+            Console.WriteLine("No entries found.");
+        }
+        else
+        {
+            foreach (Entry entry in entries)
             {
-                Console.WriteLine("No entries found.");
-            }
-            else
-            {
-                foreach (Entry _entry in entries)
-                {
-                    Console.WriteLine($"[{_entry._date}]\n{_entry._content}\n{_entry._prompt}");
+                entry.Display();
+                Console.WriteLine();
                 }
             }
     }
+    
     //works do not touch
     //load the entries
     public void LoadEntries()
@@ -43,7 +47,9 @@ public class Journal
         Repository repository = new Repository();
         Console.WriteLine("Entries loading.");
         Console.WriteLine("Entries loaded.");
-        repository.LoadEntries();
+        string filePath = "path/to/your/file.txt"; // specify the file path
+        repository.LoadEntries(filePath);
+
         
         
     }
@@ -52,7 +58,8 @@ public class Journal
     public void SaveEntries()
     {
         Repository repository = new Repository();
-        repository.SaveEntries();
+        string filePath = @"C:\Users\alton\source\cse210-projects\prove\Develop02\example.txt"; // specify the file path
+        repository.SaveEntries(filePath);
         Console.WriteLine("Entries saved.");
     }
 }
