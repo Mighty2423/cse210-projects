@@ -2,28 +2,34 @@ using System ;
 
 public class Fraction
 {
-    private int _top;
-    private int _bottom
+    private int _topn;
+    private int _bottomn;
     
     public Fraction()
     {
-    _top = 1;
-    _bottom = 1;
+    _topn = 1;
+    _bottomn = 1;
     }
 
     public Fraction(int wholenumber)
     {
-    _top = int wholenumber;
-    _bottom = 1;
+    _topn = wholenumber;
+    _bottomn = 1;
     }
 
-    public Fraction(int top , int botton)
+    public Fraction(int top , int bottom)
     {
-    _top = top;
-    _bottom = bottom;
+    _topn = top;
+    _bottomn = bottom;
     }
 
+    public string GetFractString()
+    {
+    return $"{_topn} / {_bottomn}";
+    }
 
-    
-    
+    public double GetDecValue()
+    {
+    return (double)_topn / (double)_bottomn;
+    }
 }
