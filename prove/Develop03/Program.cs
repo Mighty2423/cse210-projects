@@ -17,7 +17,6 @@ class Program
         Content reference = new Content("Proverbs", 3, 5, 6);
         string scriptureText = "Trust in the Lord with all your heart and lean not on your own understanding;";
         Scripture scripture = new Scripture(reference, scriptureText);
-
         while (true)
         {
             Console.Clear();
