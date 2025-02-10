@@ -6,8 +6,8 @@ public class WordFunc
     private string _text;
     private bool _isHidden;
 
-    public string Text => _text;
-    public bool IsHidden => _isHidden;
+    public string Text => _text;// lamdis expression
+    public bool IsHidden => _isHidden;// lamdis expression
 
 
     public WordFunc(string text)
