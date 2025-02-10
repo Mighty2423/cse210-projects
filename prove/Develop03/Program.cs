@@ -26,7 +26,7 @@ class Program
 
             if (input.ToLower() == "quit") break;
 
-            if (!scripture.HideRandomWords(2))
+            if (!scripture.HideRandomWords(3))
             {
                 Console.Clear();
                 Console.WriteLine("All words are hidden!\n");

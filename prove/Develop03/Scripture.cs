@@ -18,7 +18,7 @@ public class Scripture
     //hide random words
     public bool HideRandomWords(int count)
     {
-        var visibleWords = _words.Where(word => !word.IsHidden).ToList();
+        List<WordFunc> visibleWords = _words.Where(word => !word.IsHidden).ToList();
         if (visibleWords.Count == 0) return false; // All words are hidden
 
         int wordsToHide = Math.Min(count, visibleWords.Count);
