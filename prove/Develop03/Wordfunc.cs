@@ -9,7 +9,7 @@ public class WordFunc
     public string Text => _text;// lamdis expression
     public bool IsHidden => _isHidden;// lamdis expression
 
-
+    // WordFunc constructor
     public WordFunc(string text)
     {
         _text = text;
@@ -23,6 +23,6 @@ public class WordFunc
     //override ToString method
     public override string ToString()
     {
-        return _isHidden ? "_____" : _text;
+        return _isHidden ? new string('_', _text.Length) : _text;
     }
 }

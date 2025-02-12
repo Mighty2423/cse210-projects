@@ -13,6 +13,7 @@ public class Content
     public int StartVerse => _startVerse;
     public int EndVerse => _endVerse;
 
+    // content public field
     public Content(string book, int chapter, int startVerse)
     {
         _book = book;
@@ -21,7 +22,7 @@ public class Content
         _endVerse = startVerse; // Single verse case
     }
 
-    // content 
+    // content public field
     public Content(string book, int chapter, int startVerse, int endVerse)
     {
         _book = book;

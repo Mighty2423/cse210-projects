@@ -3,6 +3,7 @@ using System;
 //program class
 class Program
 {
+    // Main method
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to the Bible Word Game!");
@@ -14,8 +15,8 @@ class Program
         Console.WriteLine("Let's get started!");
         Console.ReadLine();
         
+        // Game object start
         Game game = new Game();
         game.Start();
-        game.End();
     }
 }
