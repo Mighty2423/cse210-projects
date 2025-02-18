@@ -1,12 +1,19 @@
 public class CampingAssignment : Assignment
 {
+    private string _classname;
     private string _campsite;
     private string _equipment;
 
-    public CampingAssignment(string studentName, string topic, string campsite, string equipment) : base(studentName, topic)
+    public CampingAssignment(string classname ,string studentName, string topic, string campsite, string equipment) : base(classname,studentName, topic)
     {
+        _classname = classname;
         _campsite = campsite;
         _equipment = equipment;
+    }
+
+    public string GetClassName()
+    {
+        return _classname;
     }
 
     public string GetCampingInformation()

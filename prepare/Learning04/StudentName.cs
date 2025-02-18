@@ -18,4 +18,15 @@ public class StudentName
     {
         return string.Join(", ", _classname);
     }
+
+    // public string combines getallstudentnames and getclassname side by side
+    public string GetsidebySide()
+    {
+        List<string> combined = new List<string>();
+        for (int i = 0; i < _studentNames.Count; i++)
+        {
+            combined.Add($"{_studentNames[i]} - {_classname[i]}");
+        }
+            return string.Join(", ", combined);
+        }
 }
