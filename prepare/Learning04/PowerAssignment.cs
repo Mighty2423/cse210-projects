@@ -1,5 +1,3 @@
-
-
 public class PowerAssignment : Assignment
 {
     private string _classname;

@@ -22,6 +22,9 @@ class Program
         Console.WriteLine(writingAssignment.GetClassName());
         Console.WriteLine(writingAssignment.GetSummary());
         Console.WriteLine(writingAssignment.GetWritingInformation());
+        #if WINDOWS
+                Console.Beep(duration: 10, frequency: 1000);
+        #endif
         Console.WriteLine();
 
         // Test poertyAssignment Class

@@ -1,5 +1,3 @@
-using System;
-
 class PoetryAssignment : Assignment
 {
     private string _classname;
