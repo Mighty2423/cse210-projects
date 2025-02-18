@@ -31,5 +31,15 @@ class Program
         PowerAssignment powerAssignment = new PowerAssignment("Jane powel", "welder", "Begginger", "MIG");
         Console.WriteLine(powerAssignment.GetSummary());
         Console.WriteLine(powerAssignment.GetPowerInformation());
+        Console.WriteLine();
+
+        // Test campingAssignment Class
+        CampingAssignment campingAssignment = new CampingAssignment("John Smith", "Camping", "Yellowstone", "Tent, Sleeping Bag, Flashlight");
+        CampingAssignment campingAssignment2 = new CampingAssignment("Blan ranger", "Camping survival", "Newyork", "box tent, Blanket, Flashlight");
+        Console.WriteLine(campingAssignment.GetSummary());
+        Console.WriteLine(campingAssignment.GetCampingInformation());
+        Console.WriteLine(campingAssignment2.GetSummary());
+        Console.WriteLine(campingAssignment2.GetCampingInformation());
+        Console.WriteLine();
     }
 }
