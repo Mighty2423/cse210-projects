@@ -28,7 +28,9 @@ public class Game
                 if (!scripture.HideRandomWords(3)) // Hide 3 words per turn
                 {
                     Console.Clear();
+                    End();
                     Console.WriteLine("All words are hidden!");
+                    break;
                 }
 
             }
@@ -39,5 +41,6 @@ public class Game
     {
         Console.Clear();
         Console.WriteLine("Game Over!");
+    
     }
 }
