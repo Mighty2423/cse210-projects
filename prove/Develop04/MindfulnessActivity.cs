@@ -7,29 +7,47 @@ public class MindfulnessActivity
     private int _duration;
     private string _name;
     
-    public MindfulnessActivity(string name, int duration)
+    public MindfulnessActivity(string name)
     {
         _name = name;
-        _duration = duration;
     }
 
-    public Startactvity()
+    public void Startactvity()
     {
+        Console.Clear();
         Console.WriteLine("Starting activity: " + _name);
+        Console.Write("Enter duration in Seconds: ");
+        _duration = int.Parse(Console.ReadLine());
+        Console.WriteLine("Switinf to selected activity now...");
+        PauseAnimation(3);
+
+        
+
     }
 
-    public StopActivity()
+    public void StopActivity()
     {
-        Debug.WriteLine("Stopping activity: " + _name);
+        Console.WriteLine("Stopping activity: " + _name);
+        Console.WriteLine($"Activity: {_name} | Duration: {_duration} seconds");
+        PauseAnimation(3);
+
     }
 
-    public displayspinner()
+    public void PauseAnimation(int seconds)
     {
-        Debug.WriteLine("Displaying spinner for activity: " + _name);
+        for (int i = 0; i < seconds; i++)
+        {
+            Console.Write(".");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine();
     }
 
-    public HideSpinner()
+    public int GetDuration()
     {
-        Debug.WriteLine("Hiding spinner for activity: " + _name);
+        return _duration;
     }
+    
+    public void RunActivity()
+    
 }
