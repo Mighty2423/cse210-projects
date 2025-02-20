@@ -10,7 +10,7 @@ class Program
                 Console.WriteLine("Mindfulness Program");
                 Console.WriteLine("Select an activity:");
                 Console.WriteLine("Please use nubmers to select an activity");
-                Console.WriteLine("EXAMPLE: 1");
+                Console.WriteLine("EXAMPLE: 1 then press enter");
                 Console.WriteLine("Menu options:");
                 Console.WriteLine("1. Breathing Activity");
                 Console.WriteLine("2. Reflection Activity");

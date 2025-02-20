@@ -10,7 +10,10 @@ public class ReflectionActivity : MindfulnessActivity
             "Think of a time when you stood up for someone else.",
             "Think of a time when you did something really difficult.",
             "Think of a time when you helped someone in need.",
-            "Think of a time when you did something truly selfless." 
+            "Think of a time when you did something truly selfless.",
+            "Think of a time when you were really proud of yourself.",
+            "Think of a time when you did a good deed."
+
         };
 
         _questions = new List<string>
@@ -26,13 +29,29 @@ public class ReflectionActivity : MindfulnessActivity
             "How can you keep this experience in mind in the future?"
         };
     }
+    protected override string GetInstructions()
+    {
+        return "Welcome to Reflection Activity.";
+    }
     public override void RunActivity()
     {
+        
         Startactvity();
+        int _duration = GetDuration();
+        Random random = new Random();
+
+        string _prompt = _prompts[random.Next(_prompts.Count)];
+        Console.WriteLine(_prompt);
         PauseAnimation(3);
 
-        PauseAnimation(3);
-
+        int _holdtime = 0;
+        while (_holdtime < _duration)
+        {
+            string _question = _questions[random.Next(_questions.Count)];
+            Console.WriteLine(_question);
+            PauseAnimation(3);
+            _holdtime += _duration;
+        }
         StopActivity();
     }
 }
