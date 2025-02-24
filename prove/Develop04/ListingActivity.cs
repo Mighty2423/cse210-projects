@@ -45,12 +45,18 @@ public class ListingActivity : MindfulnessActivity
             string _response = Console.ReadLine();
             _responses.Add(_response);
         }
-        Console.WriteLine("Time is up!");
-        Console.WriteLine($"You entered this many {_responses.Count} items.");
-        Console.WriteLine("Nice job!");
-        Console.Clear();
+        if (_duration == 0)
+        {
+            Console.WriteLine("You did not enter any items.");
+        }
+        else
+        {
+            Console.WriteLine("Time is up!");
+            Console.WriteLine($"You entered this many {_responses.Count} items.");
+            Console.WriteLine("Nice job!");
+        }
 
-        
+
         PauseAnimation(5);
         StopActivity();
     }

@@ -9,7 +9,7 @@ class Program
                 Console.WriteLine("Mindfulness Program");
                 Console.WriteLine("Select an activity:");
                 Console.WriteLine("Please use nubmers to select an activity");
-                Console.WriteLine("EXAMPLE: 1 then press enter");
+                Console.WriteLine("EXAMPLE: 1 then press enter or the word  of the number'quit' to exit");
                 Console.WriteLine("Menu options:");
                 Console.WriteLine("1. Breathing Activity");
                 Console.WriteLine("2. Reflection Activity");
@@ -19,13 +19,13 @@ class Program
 
                 string choice = Console.ReadLine();
 
-                if (choice == "4") break;
+                if (choice == "4" || choice == "quit" || choice == "four") break;
 
                 MindfulnessActivity activity = null;
 
-                if (choice == "1") activity = new BreathingActivity();
-                else if (choice == "2") activity = new ReflectionActivity();
-                else if (choice == "3") activity = new ListingActivity();
+                if (choice == "1" || choice == "one") activity = new BreathingActivity();
+                else if (choice == "2" || choice == "two") activity = new ReflectionActivity();
+                else if (choice == "3"  || choice == "three") activity = new ListingActivity();
 
                 if (activity != null)
                 {

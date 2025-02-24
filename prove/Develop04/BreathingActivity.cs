@@ -16,17 +16,19 @@ public class BreathingActivity : MindfulnessActivity
 
         int _duration = GetDuration();
         int _breathing = 6;
-        int _cycle = _duration / _breathing;
+        int _cycles = _duration / _breathing;
 
         
-        for (int i = 0; i < _duration; i++)
+        for (int i = 0; i < _cycles; i++)
         {
             Console.WriteLine("Breathing in...");
             PauseAnimation(3);
+
             Console.WriteLine("Now Breath out...");
             PauseAnimation(3);
         }
         StopActivity();
+        PauseAnimation(5);
         }
 
     }
