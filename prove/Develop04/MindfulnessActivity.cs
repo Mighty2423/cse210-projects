@@ -93,17 +93,6 @@ public class MindfulnessActivity
     {
         return _duration;
     }
-<<<<<<< HEAD
-    
-    public void RunActivity()
-    {
-        // Implementation for RunActivity
-        Console.WriteLine("Running activity: " + _name);
-    }
-
-}
-=======
     public virtual void RunActivity()
     {}
 }
->>>>>>> 8a7700f4d3f20f52e8fd13d484313d2bb6ee8b1f
