@@ -19,16 +19,32 @@ public class ListingActivity : MindfulnessActivity
             
         };
     }
+
+    protected override string GetInstructions()
+    {
+        return 
+        "Welcome to Listing Activity \n Activity: Listing \n This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+    }
     public override void RunActivity()
     {
         Startactvity();
         PauseAnimation(3);
-        Console. WriteLine("Activity: Listing");
-        Console.WriteLine("This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
         
+        int _duration = GetDuration();
+        Random random = new Random();
 
-        PauseAnimation(3);
+        string _prompt = _prompts[random.Next(_prompts.Count)];
+        Console.WriteLine(_prompt);
+        PauseAnimation(10);
 
+        
+        Console.WriteLine("Please enter your response: ");
+        string _response = Console.ReadLine();
+        _responses.Add(_response);
+
+        Console.WriteLine($"You entered this many {_response} items.");
+        Console.WriteLine("Nice job!");
+        PauseAnimation(5);
         StopActivity();
     }
 }
