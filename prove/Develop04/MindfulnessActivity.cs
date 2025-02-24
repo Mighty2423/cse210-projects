@@ -2,16 +2,36 @@ public class MindfulnessActivity
 {
     private int _duration;
     private string _name;
+
+    protected virtual string GetInstructions()
+    {
+        return "Welcome to _name Activity.";
+    }
     
     public MindfulnessActivity(string name)
     {
         _name = name;
     }
 
-    protected virtual string GetInstructions()
+    protected void DisplayLoadingScreen()
     {
-        return "Follow the activity prompts to relax and reflect.";
+        Console.Clear();
+        Console.Write($"Loading {_name} Activity");
+
+        for (int i = 0; i < 3; i++)
+        {
+            Thread.Sleep(500);
+            Console.Write(".");
+        }
+
+        Console.WriteLine("\n\nActivity Loaded Successfully!");
+        Console.Clear();
+        Console.WriteLine($"\n\n Welcome to \"{_name}\" activity of the mindfulness Program");
+        Console.WriteLine(GetInstructions()); // 🚀 Show instructions correctly
+        Console.WriteLine("\nPress Enter to continue...");
+        Console.ReadLine(); // Pause for user to read before moving on
     }
+
 
     public void Startactvity()
     {
@@ -31,29 +51,11 @@ public class MindfulnessActivity
     {
         Console.WriteLine("Stopping activity: " + _name);
         Console.WriteLine($"Activity: {_name} | Duration: {_duration} seconds");
-        PauseAnimation(1);
+        Console.WriteLine("You have completed the activity");
+        Console.WriteLine("Nice job!");
+        PauseAnimation(5);
         return;
-
     }
-
-    protected void DisplayLoadingScreen()
-    {
-        Console.Clear();
-        Console.Write($"Loading {_name} Activity");
-
-        for (int i = 0; i < 3; i++)
-        {
-            Thread.Sleep(500);
-            Console.Write(".");
-        }
-
-        Console.WriteLine($"\n Instructions for {_name} Activity:");
-        Console.WriteLine(GetInstructions()); // 🚀 Show instructions correctly
-
-        Console.WriteLine("\nPress Enter to continue...");
-        Console.ReadLine(); // Pause for user to read before moving on
-    }
-
 
     public void PauseAnimation(int _seconds)
     {

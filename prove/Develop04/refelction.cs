@@ -29,31 +29,32 @@ public class ReflectionActivity : MindfulnessActivity
             "How can you keep this experience in mind in the future?"
         };
     }
-    protected override string GetInstructions()
+        protected override string GetInstructions()
     {
-        return "Welcome to Reflection Activity.";
+        return
+        "This activity will help you reflect on times in your life when you have shown strength and resilience. \n" +
+        "This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
+    
+
     public override void RunActivity()
     {
-        
         Startactvity();
         int _duration = GetDuration();
         Random random = new Random();
 
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
-<<<<<<< HEAD
         PauseAnimation(5);
-=======
         PauseAnimation(3);
         Console.WriteLine("Activity: Reflection");
         Console.WriteLine("This activity will help you reflect on the good things in your life by having you think about a time when you did something good for someone else.");
         Console.WriteLine("You will then answer some questions about that experience.");
-        Console.WriteLine(_prompts[Random.Next(0, _prompts.Count)]);
-        Console.WriteLine(_questions[Random.Next(0, _questions.Count)]);
+        Console.Clear();
+        PauseAnimation(5);
+        Console.WriteLine(_prompts[random.Next(0, _prompts.Count)]);
+        Console.WriteLine(_questions[random.Next(0, _questions.Count)]);
         
->>>>>>> 2a5b402b88d0504e01622d097d6b89004307e095
-
         int _holdtime = 0;
         while (_holdtime < _duration)
         {
@@ -63,5 +64,6 @@ public class ReflectionActivity : MindfulnessActivity
             _holdtime += 5;
         }
         StopActivity();
+        PauseAnimation(10);
     }
 }

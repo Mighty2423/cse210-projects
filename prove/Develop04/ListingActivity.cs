@@ -22,8 +22,9 @@ public class ListingActivity : MindfulnessActivity
 
     protected override string GetInstructions()
     {
-        return 
-        "Welcome to Listing Activity \n Activity: Listing \n This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
+        return
+        "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area. \n" +
+        "Please enter the amount of time you would like to do this activity for in seconds.";
     }
     public override void RunActivity()
     {
@@ -44,9 +45,10 @@ public class ListingActivity : MindfulnessActivity
             string _response = Console.ReadLine();
             _responses.Add(_response);
         }
-        
+        Console.WriteLine("Time is up!");
         Console.WriteLine($"You entered this many {_responses.Count} items.");
         Console.WriteLine("Nice job!");
+        Console.Clear();
         PauseAnimation(5);
         StopActivity();
     }
