@@ -1,7 +1,4 @@
 
-
-using System.Diagnostics;
-
 public class MindfulnessActivity
 {
     private int _duration;
@@ -49,5 +46,9 @@ public class MindfulnessActivity
     }
     
     public void RunActivity()
-    
+    {
+        // Implementation for RunActivity
+        Console.WriteLine("Running activity: " + _name);
+    }
+
 }

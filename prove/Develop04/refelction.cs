@@ -30,6 +30,12 @@ public class ReflectionActivity : MindfulnessActivity
     {
         Startactvity();
         PauseAnimation(3);
+        Console.WriteLine("Activity: Reflection");
+        Console.WriteLine("This activity will help you reflect on the good things in your life by having you think about a time when you did something good for someone else.");
+        Console.WriteLine("You will then answer some questions about that experience.");
+        Console.WriteLine(_prompts[Random.Next(0, _prompts.Count)]);
+        Console.WriteLine(_questions[Random.Next(0, _questions.Count)]);
+        
 
         PauseAnimation(3);
 
