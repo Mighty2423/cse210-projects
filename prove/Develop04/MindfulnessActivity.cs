@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 8a7700f4d3f20f52e8fd13d484313d2bb6ee8b1f
 public class MindfulnessActivity
 {
     private int _duration;
