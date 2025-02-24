@@ -14,10 +14,12 @@ public class BreathingActivity : MindfulnessActivity
         Startactvity();
         PauseAnimation(3);
 
-        int duration = GetDuration();
+        int _duration = GetDuration();
+        int _breathing = 6;
+        int _cycle = _duration / _breathing;
+
         
-        
-        for (int i = 0; i < duration; i++)
+        for (int i = 0; i < _duration; i++)
         {
             Console.WriteLine("Breathing in...");
             PauseAnimation(3);

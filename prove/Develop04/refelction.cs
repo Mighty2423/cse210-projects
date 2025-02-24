@@ -40,21 +40,20 @@ public class ReflectionActivity : MindfulnessActivity
     public override void RunActivity()
     {
         Startactvity();
+        PauseAnimation(3);
+
+
         int _duration = GetDuration();
         Random random = new Random();
 
+        // Display a prompt
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
         PauseAnimation(5);
+        Console.WriteLine("Now think about the following questions:");
         PauseAnimation(3);
-        Console.WriteLine("Activity: Reflection");
-        Console.WriteLine("This activity will help you reflect on the good things in your life by having you think about a time when you did something good for someone else.");
-        Console.WriteLine("You will then answer some questions about that experience.");
-        Console.Clear();
-        PauseAnimation(5);
-        Console.WriteLine(_prompts[random.Next(0, _prompts.Count)]);
-        Console.WriteLine(_questions[random.Next(0, _questions.Count)]);
         
+        // Display a question in loop
         int _holdtime = 0;
         while (_holdtime < _duration)
         {
@@ -64,6 +63,6 @@ public class ReflectionActivity : MindfulnessActivity
             _holdtime += 5;
         }
         StopActivity();
-        PauseAnimation(10);
+        PauseAnimation(3);
     }
 }

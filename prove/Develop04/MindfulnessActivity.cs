@@ -25,28 +25,33 @@ public class MindfulnessActivity
         }
 
         Console.WriteLine("\n\nActivity Loaded Successfully!");
-        Console.Clear();
-        Console.WriteLine($"\n\n Welcome to \"{_name}\" activity of the mindfulness Program");
-        Console.WriteLine(GetInstructions()); // 🚀 Show instructions correctly
+        Thread.Sleep(1000); // Give user a moment to see this before clearing
+
+        Console.Clear(); // NOW clear the screen before showing instructions
+
+        Console.WriteLine($"\n\n Welcome to \"{_name}\" activity in the Mindfulness Program");
+        Console.WriteLine(GetInstructions()); // Show instructions correctly
         Console.WriteLine("\nPress Enter to continue...");
         Console.ReadLine(); // Pause for user to read before moving on
+         // Ensure a fresh start before asking for input
     }
 
 
-    public void Startactvity()
+    public void  Startactvity()
     {
-        Console.Clear();
-
-        // 🚀 Display loading screen & instructions first
+        // Display loading screen & instructions first
         DisplayLoadingScreen();
-
         Console.Write("Enter duration in Seconds: ");
-        _duration = int.Parse(Console.ReadLine());  // Now user enters duration
-
-        Console.WriteLine("Switching to selected activity now...");
+        _duration = int.Parse(Console.ReadLine());  // User enters duration
+        Console.Clear();
+        Console.WriteLine($"Switching to {_name} activity now...");
+        PauseAnimation(2);
+        Console.Clear();
         Console.WriteLine("\nGet ready...");
+        PauseAnimation(2);
     }
-    
+
+
     public void StopActivity()
     {
         Console.WriteLine("Stopping activity: " + _name);

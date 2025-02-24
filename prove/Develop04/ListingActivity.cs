@@ -15,9 +15,6 @@ public class ListingActivity : MindfulnessActivity
         };
 
         _responses = new List<string>();
-        {
-            
-        };
     }
 
     protected override string GetInstructions()
@@ -29,15 +26,18 @@ public class ListingActivity : MindfulnessActivity
     public override void RunActivity()
     {
         Startactvity();
-        PauseAnimation(2);
         
         int _duration = GetDuration();
         Random random = new Random();
-
+        
+        
+        Console.Clear();
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
+        Console.WriteLine("\nThink about it for a moment...");
         PauseAnimation(5);
 
+        
         DateTime _end = DateTime.Now.AddSeconds(_duration);
         while (DateTime.Now < _end)
         {
@@ -49,6 +49,8 @@ public class ListingActivity : MindfulnessActivity
         Console.WriteLine($"You entered this many {_responses.Count} items.");
         Console.WriteLine("Nice job!");
         Console.Clear();
+
+        
         PauseAnimation(5);
         StopActivity();
     }
