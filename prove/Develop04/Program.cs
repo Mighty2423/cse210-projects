@@ -1,7 +1,6 @@
-using System;
-
 class Program
 {
+    // Main method
     static void Main(string[] args)
     {
             while (true)

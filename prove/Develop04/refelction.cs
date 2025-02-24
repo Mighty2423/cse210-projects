@@ -42,7 +42,17 @@ public class ReflectionActivity : MindfulnessActivity
 
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
+<<<<<<< HEAD
         PauseAnimation(5);
+=======
+        PauseAnimation(3);
+        Console.WriteLine("Activity: Reflection");
+        Console.WriteLine("This activity will help you reflect on the good things in your life by having you think about a time when you did something good for someone else.");
+        Console.WriteLine("You will then answer some questions about that experience.");
+        Console.WriteLine(_prompts[Random.Next(0, _prompts.Count)]);
+        Console.WriteLine(_questions[Random.Next(0, _questions.Count)]);
+        
+>>>>>>> 2a5b402b88d0504e01622d097d6b89004307e095
 
         int _holdtime = 0;
         while (_holdtime < _duration)
