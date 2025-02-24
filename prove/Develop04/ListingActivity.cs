@@ -28,21 +28,24 @@ public class ListingActivity : MindfulnessActivity
     public override void RunActivity()
     {
         Startactvity();
-        PauseAnimation(3);
+        PauseAnimation(2);
         
         int _duration = GetDuration();
         Random random = new Random();
 
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
-        PauseAnimation(10);
+        PauseAnimation(5);
 
+        DateTime _end = DateTime.Now.AddSeconds(_duration);
+        while (DateTime.Now < _end)
+        {
+            Console.WriteLine("Please enter your response: ");
+            string _response = Console.ReadLine();
+            _responses.Add(_response);
+        }
         
-        Console.WriteLine("Please enter your response: ");
-        string _response = Console.ReadLine();
-        _responses.Add(_response);
-
-        Console.WriteLine($"You entered this many {_response} items.");
+        Console.WriteLine($"You entered this many {_responses.Count} items.");
         Console.WriteLine("Nice job!");
         PauseAnimation(5);
         StopActivity();

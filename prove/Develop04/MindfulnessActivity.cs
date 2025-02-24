@@ -58,31 +58,15 @@ public class MindfulnessActivity
     public void PauseAnimation(int _seconds)
     {
         string[] _spinner = { "|", "/", "-", "\\" };
-        int _time = 0;
 
-        while (_time < _seconds)
+        for (int _time = 0; _time < _seconds * 4; _time++) // Run for total duration
         {
-            foreach (string _frame in _spinner)
-            {
-                Console.Write($"\r{_frame} "); 
-                Thread.Sleep(250);  // Pause for 250ms per frame
-            }
-            _time++;
-
-            for (int i = 0; i < _seconds; i++)
-            {
-                foreach (string _frame in _spinner)
-                {
-                    Console.Write($"\r{_frame} "); // \r moves the cursor back to overwrite previous frame
-                    Thread.Sleep(250);  // Pause for 250ms per frame
-                }
-                Console.Write("\r "); // Clear the animation
-                Console.Write(".");
-                Thread.Sleep(10);
-            }
-            Console.Write("\r "); // Clear the animation
-            Console.WriteLine();
+            Console.Write($"\r{_spinner[_time % 4]} "); // Overwrite previous frame
+            Thread.Sleep(250); // 4 frames per second
         }
+
+        Console.Write("\r "); // Clear spinner after animation
+        Console.WriteLine();
     }
 
     public int GetDuration()

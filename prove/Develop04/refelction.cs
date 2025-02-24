@@ -42,15 +42,15 @@ public class ReflectionActivity : MindfulnessActivity
 
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
-        PauseAnimation(3);
+        PauseAnimation(5);
 
         int _holdtime = 0;
         while (_holdtime < _duration)
         {
             string _question = _questions[random.Next(_questions.Count)];
             Console.WriteLine(_question);
-            PauseAnimation(3);
-            _holdtime += _duration;
+            PauseAnimation(5);
+            _holdtime += 5;
         }
         StopActivity();
     }
