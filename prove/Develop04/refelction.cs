@@ -63,7 +63,7 @@ public class ReflectionActivity : MindfulnessActivity
             _holdtime += 5;
         }
         StopActivity();
-        PauseAnimation(3);
+        PauseAnimation(5);
     }
 
     private void PauseWithSpinner(int seconds)
