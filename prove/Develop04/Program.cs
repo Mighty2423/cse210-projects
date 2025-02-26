@@ -33,7 +33,8 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Try again.");
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    Console.ReadLine();
                 }
             }
         }
