@@ -35,7 +35,9 @@ public class ListingActivity : MindfulnessActivity
         string _prompt = _prompts[random.Next(_prompts.Count)];
         Console.WriteLine(_prompt);
         Console.WriteLine("\nThink about it for a moment...");
-        PauseAnimation(5);
+        PauseWithSpinner(5);
+
+        Console.WriteLine("\nNow, start listing as many items as you can:");
 
         
         DateTime _end = DateTime.Now.AddSeconds(_duration);
@@ -45,7 +47,7 @@ public class ListingActivity : MindfulnessActivity
             string _response = Console.ReadLine();
             _responses.Add(_response);
         }
-        if (_duration == 0)
+        if (_responses.Count == 0)
         {
             Console.WriteLine("You did not enter any items.");
         }
@@ -55,9 +57,17 @@ public class ListingActivity : MindfulnessActivity
             Console.WriteLine($"You entered this many {_responses.Count} items.");
             Console.WriteLine("Nice job!");
         }
-
-
         PauseAnimation(5);
         StopActivity();
+    }
+    private void PauseWithSpinner(int seconds)
+    {
+        string[] spinner = { "|", "/", "-", "\\" };
+        for (int i = 0; i < seconds * 4; i++) // 4 frames per second
+        {
+            Console.Write($"\r{spinner[i % 4]} ");
+            Thread.Sleep(250);
+        }
+        Console.Write("\r   \n"); // Clear spinner after animation
     }
 }

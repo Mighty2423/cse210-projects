@@ -26,9 +26,7 @@ public class MindfulnessActivity
 
         Console.WriteLine("\n\nActivity Loaded Successfully!");
         Thread.Sleep(1000); // Give user a moment to see this before clearing
-
         Console.Clear(); // NOW clear the screen before showing instructions
-
         Console.WriteLine($"\n\n Welcome to \"{_name}\" activity in the Mindfulness Program");
         Console.WriteLine(GetInstructions()); // Show instructions correctly
         Console.WriteLine("\nPress Enter to continue...");

@@ -32,7 +32,7 @@ public class ReflectionActivity : MindfulnessActivity
         protected override string GetInstructions()
     {
         return
-        "This activity will help you reflect on times in your life when you have shown strength and resilience. \n" +
+        "This activity will help you reflect on times in your life when you have shown strength and resilience.\n" +
         "This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
     
@@ -59,10 +59,21 @@ public class ReflectionActivity : MindfulnessActivity
         {
             string _question = _questions[random.Next(_questions.Count)];
             Console.WriteLine(_question);
-            PauseAnimation(5);
+            PauseWithSpinner(5);
             _holdtime += 5;
         }
         StopActivity();
         PauseAnimation(3);
+    }
+
+    private void PauseWithSpinner(int seconds)
+    {
+        string[] spinner = { "|", "/", "-", "\\" };
+        for (int i = 0; i < seconds * 4; i++) // 4 frames per second
+        {
+            Console.Write($"\r{spinner[i % 4]} ");
+            Thread.Sleep(250);
+        }
+        Console.Write("\r   \n"); // Clear spinner after animation
     }
 }
