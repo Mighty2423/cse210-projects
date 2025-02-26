@@ -46,7 +46,7 @@ public class MindfulnessActivity
         PauseAnimation(2);
         Console.Clear();
         Console.WriteLine("\nGet ready...");
-        PauseAnimation(2);
+        PauseAnimation(1);
     }
 
 
