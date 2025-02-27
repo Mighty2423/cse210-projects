@@ -5,9 +5,10 @@ public class MindfulnessActivity
 
     protected virtual string GetInstructions()
     {
-        return "Welcome to _name Activity.";
+        return $"Welcome to {_name} Activity.";
     }
-    
+
+
     public MindfulnessActivity(string name)
     {
         _name = name;
@@ -24,7 +25,7 @@ public class MindfulnessActivity
             Console.Write(".");
         }
 
-        Console.WriteLine("\n\nActivity Loaded Successfully!");
+        Console.WriteLine("\nActivity Loaded Successfully!");
         Thread.Sleep(1000); // Give user a moment to see this before clearing
         Console.Clear(); // NOW clear the screen before showing instructions
         Console.WriteLine($"\n\n Welcome to \"{_name}\" activity in the Mindfulness Program");
@@ -39,20 +40,24 @@ public class MindfulnessActivity
     {
         // Display loading screen & instructions first
         DisplayLoadingScreen();
-        Console.Write("Enter duration in Seconds: ");
-        _duration = int.Parse(Console.ReadLine());  // User enters duration
+        while (true)
+        {
+            Console.Write("Enter duration in seconds: ");
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out _duration) && _duration > 0) break;
+            Console.WriteLine("⚠️ Invalid input! Please enter a valid positive number.");
+        }
         Console.Clear();
         Console.WriteLine($"Switching to {_name} activity now...");
         PauseAnimation(2);
         Console.Clear();
         Console.WriteLine("\nGet ready...");
-        PauseAnimation(1);
     }
 
 
     public void StopActivity()
     {
-        Console.WriteLine("Stopping activity: " + _name);
+        Console.WriteLine($"\nStopping {_name} Activity...");
         Console.WriteLine($"Activity: {_name} | Duration: {_duration} seconds");
         Console.WriteLine("You have completed the activity");
         Console.WriteLine("Nice job!");
@@ -60,17 +65,15 @@ public class MindfulnessActivity
         return;
     }
 
-    public void PauseAnimation(int _seconds)
+    public void PauseAnimation(int seconds)
     {
-        string[] _spinner = { "|", "/", "-", "\\" };
-
-        for (int _time = 0; _time < _seconds * 4; _time++) // Run for total duration
+        string[] spinner = { "|", "/", "-", "\\" };
+        for (int i = 0; i < seconds * 4; i++) // 4 frames per second
         {
-            Console.Write($"\r{_spinner[_time % 4]} "); // Overwrite previous frame
-            Thread.Sleep(250); // 4 frames per second
+            Console.Write($"\r{spinner[i % 4]} ");
+            Thread.Sleep(250);
         }
-
-        Console.Write("\r "); // Clear spinner after animation
+        Console.Write("\r   \n"); 
         Console.WriteLine();
     }
 

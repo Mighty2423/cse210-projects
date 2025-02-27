@@ -17,23 +17,28 @@ class Program
                 Console.WriteLine("4. Exit");
                 Console.Write("Choose an option: ");
 
-                string choice = Console.ReadLine();
+            string choice = Console.ReadLine().ToLower();
+
 
                 if (choice == "4" || choice == "quit" || choice == "four") break;
 
-                MindfulnessActivity activity = null;
+            MindfulnessActivity activity = choice switch
+            {
+                "1" or "one" => new BreathingActivity(), //leading to breathing activity
+                "2" or "two" => new ReflectionActivity(), //leading to reflection activity
+                "3" or "three" => new ListingActivity(), //leading to listing activity
+                _ => null // invalid input
+            };
 
-                if (choice == "1" || choice == "one") activity = new BreathingActivity();
-                else if (choice == "2" || choice == "two") activity = new ReflectionActivity();
-                else if (choice == "3"  || choice == "three") activity = new ListingActivity();
 
-                if (activity != null)
+
+            if (activity != null)
                 {
                     activity.RunActivity();
                 }
                 else
                 {
-                    Console.WriteLine("Invalid choice. Please try again.");
+                    Console.WriteLine("Invalid choice. Please try again. please press enter to continue");
                     Console.ReadLine();
                 }
             }

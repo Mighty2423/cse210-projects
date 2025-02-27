@@ -54,7 +54,7 @@ public class ListingActivity : MindfulnessActivity
         else
         {
             Console.WriteLine("Time is up!");
-            Console.WriteLine($"You entered this many {_responses.Count} items.");
+            Console.WriteLine($"You entered this many {_responses.Count} responses.");
             Console.WriteLine("Nice job!");
         }
         PauseAnimation(5);

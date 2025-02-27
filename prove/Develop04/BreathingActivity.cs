@@ -38,6 +38,6 @@ public class BreathingActivity : MindfulnessActivity
             Console.Write($"\r{i}... "); // \r moves the cursor back to overwrite previous number
             Thread.Sleep(1000);
         }
-        Console.WriteLine("\r   "); // Clear line
+        Console.WriteLine("\r   \n"); // Clear line
     }
 }
