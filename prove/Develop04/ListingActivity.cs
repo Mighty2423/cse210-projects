@@ -25,7 +25,7 @@ public class ListingActivity : MindfulnessActivity
     }
     public override void RunActivity()
     {
-        Startactvity();
+        StartActivity();
         
         int _duration = GetDuration();
         Random random = new Random();

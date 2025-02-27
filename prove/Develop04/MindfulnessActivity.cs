@@ -1,7 +1,7 @@
 public class MindfulnessActivity
 {
-    private int _duration;
-    private string _name;
+    protected int _duration;
+    protected string _name;
 
     protected virtual string GetInstructions()
     {
@@ -36,7 +36,7 @@ public class MindfulnessActivity
     }
 
 
-    public void  Startactvity()
+    public void StartActivity()
     {
         // Display loading screen & instructions first
         DisplayLoadingScreen();

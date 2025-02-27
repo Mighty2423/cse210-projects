@@ -39,7 +39,7 @@ public class ReflectionActivity : MindfulnessActivity
 
     public override void RunActivity()
     {
-        Startactvity();
+        StartActivity();
         PauseAnimation(3);
 
 

@@ -11,7 +11,7 @@ public class BreathingActivity : MindfulnessActivity
     }
     public override void RunActivity()
     {
-        Startactvity();
+        StartActivity();
         ShowCountdown(3);
 
         int _duration = GetDuration();
