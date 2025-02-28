@@ -1,3 +1,6 @@
+// Program file is just the interface to show the menu and start the activities. 
+// It doesn't need to know about the internals of the activities.
+// It should be simple and easy to understand.
 class Program
 {
     // Main method
