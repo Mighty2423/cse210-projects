@@ -45,7 +45,7 @@ public class MindfulnessActivity
             Console.Write("Enter duration in seconds: ");
             string input = Console.ReadLine();
             if (int.TryParse(input, out _duration) && _duration > 0) break;
-            Console.WriteLine("⚠️ Invalid input! Please enter a valid positive number.");
+            Console.WriteLine(" Invalid input! Please enter a valid positive number.");
         }
         Console.Clear();
         Console.WriteLine($"Switching to {_name} activity now...");
