@@ -1,10 +1,14 @@
+// Reflect on past experiences to help you recognize the power you have and how you can use it in other aspects of your life.
+// Create a ReflectionActivity class that is a subclass of the MindfulnessActivity class.
 public class ReflectionActivity : MindfulnessActivity
 {
+    // private fields
     private List<string> _prompts;
     private List<string> _questions;
 
     public ReflectionActivity() : base("Reflection")
     {
+        // Initialize prompts and questions
         _prompts = new List<string>
         {
             "Think of a time when you stood up for someone else.",
@@ -29,20 +33,22 @@ public class ReflectionActivity : MindfulnessActivity
             "How can you keep this experience in mind in the future?"
         };
     }
+
+        // GetInstructions method
         protected override string GetInstructions()
     {
         return
         "This activity will help you reflect on times in your life when you have shown strength and resilience.\n" +
         "This will help you recognize the power you have and how you can use it in other aspects of your life.";
     }
-    
 
+    // RunActivity method to run the reflection activity
     public override void RunActivity()
     {
         StartActivity();
         PauseAnimation(3);
 
-
+        // Get the duration of the activity
         int _duration = GetDuration();
         Random random = new Random();
 
@@ -66,14 +72,17 @@ public class ReflectionActivity : MindfulnessActivity
         PauseAnimation(5);
     }
 
+    // PauseWithSpinner method to display a spinner animation for a given number of seconds
     private void PauseWithSpinner(int seconds)
     {
+        // Spinner animation
         string[] spinner = { "|", "/", "-", "\\" };
         for (int i = 0; i < seconds * 4; i++) // 4 frames per second
         {
             Console.Write($"\r{spinner[i % 4]} ");
             Thread.Sleep(250);
         }
+        // Clear spinner after animation
         Console.Write("\r   \n"); // Clear spinner after animation
     }
 }
