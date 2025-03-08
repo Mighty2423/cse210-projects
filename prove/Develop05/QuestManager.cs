@@ -10,45 +10,45 @@ public class QuestManager
         _totalScore = 0;
     }
 
-    public void AddGoal(Goal goal)
+    public void AddGoal(Goal _goal)
     {
-        _goals.Add(goal);
+        _goals.Add(_goal);
     }
 
     public void DisplayGoals()
     {
-    
+        Console.WriteLine(" Your Goals:");
+        foreach (Goal goal in _goals)
+        {
+            Console.WriteLine($"- {goal.Name}: {goal.Description}");
+        }
     }
 
-    public void RecordGoal(string goalName)
+    public void RecordGoal(string _goalName)
     {
-    
+        
     }
 
     public void ShowScore()
     {
-    
+        Console.WriteLine($"Your total score is {_totalScore} points.");
     }
 
-    public void Save()
+    private void SaveGoals()
     {
-    
+        
     }
 
-    public void Load()
+    private void LoadGoals()
     {
-    
+        
     }
 
-    public void SaveToFile()
+    private class SaveData
     {
-    
+
     }
 
-    public void LoadFromFile()
-    {
-    
-    }
 
     
 }

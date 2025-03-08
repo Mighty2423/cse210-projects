@@ -4,12 +4,14 @@ public abstract class Goal
     public string Description { get; }
     public int Points { get; protected set; }
 
-    public Goal(string name, string description, int points)
+    public Goal(string _name, string _description, int _points)
     {
-        Name = name;
-        Description = description;
-        Points = points;
+        Name = _name;
+        Description = _description;
+        Points = _points;
     }
 
-    
+    public abstract void RecordProgress();
+
+    public abstract bool IsComplete();
 }
