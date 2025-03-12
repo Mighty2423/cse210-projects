@@ -1,18 +1,18 @@
 public class SimpleGoal : Goal
 {
-    private bool _completed;
+    public bool Completed { get; private set; }
 
     public SimpleGoal(string _name, string _description, int _points) 
         : base(_name, _description, _points)
     {
-        _completed = false;
+        Completed = false;
     }
 
     public override void RecordProgress()
     {
-        if (!_completed)
+        if (!Completed)
         {
-        _completed = true;
+        Completed = true;
         Console.WriteLine($"Goal {Name} completed! You earned {Points} points.");
         }
         else
@@ -21,8 +21,5 @@ public class SimpleGoal : Goal
         }
     }
 
-    public override bool IsComplete()
-    {
-        return _completed;
-    }
+    public override bool IsComplete() => Completed;
 }

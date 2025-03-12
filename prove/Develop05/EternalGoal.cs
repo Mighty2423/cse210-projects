@@ -2,6 +2,8 @@ public class EternalGoal : Goal
 {
     private int _count;
 
+    public int Count => _count;
+
     public EternalGoal(string _name, string _description, int _points) 
         : base(_name, _description, _points)
     {
