@@ -1,46 +1,75 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
 public class QuestManager
 {
-    private List<Goal> _goals;
-    private int _totalScore;
-    private const string SaveFile = "goals.json";
+    private List<Goal> goals = new List<Goal>();
+    private string filePath = "goals.txt"; // File path for saving goals
 
-    public QuestManager()
+    public void SaveGoals()
     {
-        _goals = new List<Goal>();
-        _totalScore = 0;
-        LoadGoals();
-    }
-
-    public void AddGoal(Goal _goal)
-    {
-        _goals.Add(_goal);
-        SaveGoals();
-    }
-
-    public void DisplayGoals()
-    {
-        Console.WriteLine(" Your Goals:");
-        foreach (Goal goal in _goals)
+        List<string> lines = new List<string>();
+        foreach (Goal goal in goals)
         {
-            string status = goal.IsComplete() ? "[X]" : "[ ]";
-            Console.WriteLine($"- {status} {goal.Name}: {goal.Description}");
+            lines.Add(goal.GetSaveString());
+        }
+        File.WriteAllLines(filePath, lines);
+    }
+
+    public void LoadGoals()
+    {
+        if (!File.Exists(filePath))
+            return;
+
+        goals.Clear();
+
+        string[] lines = File.ReadAllLines(filePath);
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split('|');
+            string type = parts[0];
+            string name = parts[1];
+            string description = parts[2];
+            int points = int.Parse(parts[3]);
+
+            if (type == "SimpleGoal")
+            {
+                bool completed = bool.Parse(parts[4]);
+                SimpleGoal goal = new SimpleGoal(name, description, points);
+                if (completed)
+                {
+                    goal.RecordProgress();
+                }
+                goals.Add(goal);
+            }
+            else if (type == "EternalGoal")
+            {
+                goals.Add(new EternalGoal(name, description, points));
+            }
+            else if (type == "ChecklistGoal")
+            {
+                int target = int.Parse(parts[4]);
+                int progress = int.Parse(parts[5]);
+                ChecklistGoal goal = new ChecklistGoal(name, description, points, target);
+                goal.SetProgress(progress);
+                goals.Add(goal);
+            }
         }
     }
 
-    public void RecordGoal(string _goalName)
+    public void AddGoal(Goal goal)
     {
-        Goal goal = _goals.Find(g => g.Name == _goalName);
-        if (goal == null)
+        goals.Add(goal);
+    }
+
+    public void RecordEvent(string goalName)
+    {
+        Goal goal = goals.Find(g => g.Name.Equals(goalName, StringComparison.OrdinalIgnoreCase));
+        if (goal != null)
         {
-           goal.RecordProgress();
-           _totalScore += goal.Points;
-            SaveGoals();
-            Console.WriteLine($"Progress recorded for '{_goalName}'! You earned {goal.Points} points.");
+            goal.RecordProgress();
+            Console.WriteLine($"Progress recorded for '{goal.Name}'.");
         }
         else
         {
@@ -48,39 +77,17 @@ public class QuestManager
         }
     }
 
-    public void ShowScore()
+    public void DisplayGoals()
     {
-        Console.WriteLine($"Your total score is {_totalScore} points.");
-    }
-
-    private void SaveGoals()
-    {
-        var saveData = new SaveData() { Goals = _goals, TotalScore = _totalScore };
-        string json = JsonSerializer.Serialize(saveData, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(SaveFile, json);
-        
-    }
-
-    private void LoadGoals()
-    {
-        if (File.Exists(SaveFile))
+        if (goals.Count == 0)
         {
-            string json = File.ReadAllText(SaveFile);
-            var saveData = JsonSerializer.Deserialize<SaveData>(json);
-            if (saveData != null)
-            {
-                _goals = saveData.Goals;
-                _totalScore = saveData.TotalScore;
-            }
+            Console.WriteLine("No goals available.");
+            return;
+        }
+
+        foreach (Goal goal in goals)
+        {
+            Console.WriteLine($"{goal.Name} - {goal.Description} [{(goal.IsComplete() ? "Completed" : "In Progress")}]");
         }
     }
-
-    private class SaveData
-    {
-        public List<Goal> Goals = new List<Goal>();
-        public int TotalScore;
-    }
-
-
-    
 }

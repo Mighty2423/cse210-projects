@@ -1,34 +1,33 @@
-public class ChecklistGoal : Goal
+class ChecklistGoal : Goal
 {
-    private int _targetCount;
-    private int _progress;
-    private int _bonusPoints;
+    private int target;
+    private int progress;
 
-    public int Progress => _progress;
-    public int TargetCount => _targetCount;
-    public int BonusPoints => _bonusPoints;
-
-    public ChecklistGoal(string name, string description, int points, int targetCount, int bonusPoints) 
+    public ChecklistGoal(string name, string description, int points, int target)
         : base(name, description, points)
     {
-        _targetCount = targetCount;
-        _bonusPoints = bonusPoints;
-        _progress = 0;
+        this.target = target;
+        progress = 0;
     }
 
     public override void RecordProgress()
     {
-        _progress++;
-        if (_progress >= _targetCount)
-        {
-            Console.WriteLine($"Goal {Name} completed! You earned {Points + _bonusPoints} points.");
-        }
-        else
-        {
-            Console.WriteLine($"Goal {Name} progress: {_progress}/{_targetCount}. You earned {Points} points.");
-        }
+        progress++;
+    }
+
+    public override bool IsComplete()
+    {
+        return progress >= target;
+    }
+
+    public void SetProgress(int value)
+    {
+        progress = value;
     }
 
 
-    public override bool IsComplete() => _progress >= _targetCount;
+    public override string GetSaveString()
+    {
+        return $"ChecklistGoal|{Name}|{Description}|{Points}|{target}|{progress}";
+    }
 }

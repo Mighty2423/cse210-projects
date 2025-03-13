@@ -1,23 +1,20 @@
-public class EternalGoal : Goal
+class EternalGoal : Goal
 {
-    private int _count;
-
-    public int Count => _count;
-
-    public EternalGoal(string _name, string _description, int _points) 
-        : base(_name, _description, _points)
-    {
-        _count = 0;
-    }
+    public EternalGoal(string name, string description, int points)
+        : base(name, description, points) { }
 
     public override void RecordProgress()
     {
-        _count++;
-        Console.WriteLine($"Progress: {_count}");
-        Console.WriteLine($"Goal {Name} progress: {_count}. You earned {Points} points.");
+        // Eternal goals never complete, but they always reward points
     }
 
+    public override bool IsComplete()
+    {
+        return false;
+    }
 
-
-    public override bool IsComplete() => false; //Never completes
+    public override string GetSaveString()
+    {
+        return $"EternalGoal|{Name}|{Description}|{Points}";
+    }
 }
