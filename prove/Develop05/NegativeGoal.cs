@@ -1,43 +1,31 @@
-class NegativeGoal : Goal
+public class NegativeGoal : Goal
 {
     private int penalty;
-    private bool isFailed;
 
-    public NegativeGoal(string name, string description, int points, int penalty)
-        : base(name, description, points)
+    public NegativeGoal(string name, string description, int points, int penalty) : base(name, description, points)
     {
         this.penalty = penalty;
-        this.isFailed = false;
-    }
-
-    public override void RecordProgress()
-    {
-        isFailed = true; 
-    }
-
-    public override bool IsComplete()
-    {
-        return isFailed; 
     }
 
     public override string GetSaveString()
     {
-        return $"NegativeGoal|{Name}|{Description}|{Points}|{penalty}|{isFailed}";
+        return $"NegativeGoal|{Name}|{Description}|{EarnedPoints}|{penalty}";
     }
 
-    public int GetPenalty() 
+    public override void RecordProgress()
     {
-        return penalty;
+        EarnedPoints -= penalty; // Example: Lose points when triggered
     }
 
-    public void SetPenalty(int value) 
-    {
-        penalty = value;
-    }
+    public override bool IsComplete() => false; // Never "complete" in traditional sense
 
-    public bool IsFailed() 
+    public override void LoadState(string[] parts)
     {
-        return isFailed;
+        base.LoadState(parts);
+        if (parts.Length > 4)
+        {
+            penalty = int.Parse(parts[4]); // Restore penalty value
+        }
     }
 }
 

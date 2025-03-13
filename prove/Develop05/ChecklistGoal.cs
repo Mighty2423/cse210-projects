@@ -2,6 +2,7 @@ public class ChecklistGoal : Goal
 {
     private int target;
     private int progress;
+    public int Points { get; set; }
 
     public ChecklistGoal(string name, string description, int points, int target)
         : base(name, description, points)
@@ -12,7 +13,11 @@ public class ChecklistGoal : Goal
 
     public override void RecordProgress()
     {
-        progress++;
+        if (progress < target)
+        {
+            progress++;
+            EarnedPoints += Points;  // Accumulate points for each progress step
+        }
     }
 
     public override bool IsComplete()
@@ -27,6 +32,16 @@ public class ChecklistGoal : Goal
 
     public override string GetSaveString()
     {
-        return $"ChecklistGoal|{Name}|{Description}|{Points}|{target}|{progress}";
+        return $"ChecklistGoal|{Name}|{Description}|{EarnedPoints}|{target}|{progress}";
+    }
+
+    public override void LoadState(string[] parts)
+    {
+        base.LoadState(parts);
+        if (parts.Length > 4)
+        {
+            target = int.Parse(parts[4]);   // Restore target count
+            progress = int.Parse(parts[5]); // Restore progress count
+        }
     }
 }

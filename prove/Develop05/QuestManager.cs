@@ -1,57 +1,49 @@
-
-
 public class QuestManager
 {
     private List<Goal> goals = new List<Goal>();
-    private int points = 0;
     private string filePath = "goals.txt";
+    private static int totalPoints = 0;
 
     public void SaveGoals()
     {
-        using (StreamWriter writer = new StreamWriter("goals.txt"))
+        using (StreamWriter writer = new StreamWriter(filePath))
         {
-            writer.WriteLine(points); // ✅ Save points to file
-
+            writer.WriteLine(totalPoints); // Save total accumulated points
             foreach (Goal goal in goals)
             {
                 writer.WriteLine(goal.GetSaveString());
             }
         }
         Console.WriteLine("Goals saved successfully!");
+        Console.WriteLine($"You have {totalPoints} points.\n");
     }
-
 
     public void LoadGoals()
     {
-        if (File.Exists("goals.txt"))
+        if (File.Exists(filePath))
         {
             goals.Clear();
-            using (StreamReader reader = new StreamReader("goals.txt"))
+            using (StreamReader reader = new StreamReader(filePath))
             {
-                points = int.Parse(reader.ReadLine());
+                totalPoints = int.Parse(reader.ReadLine()); // Restore total points
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] parts = line.Split('|');
                     Goal goal = null;
-
                     if (parts[0] == "SimpleGoal")
-                    {
                         goal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
-                        if (bool.Parse(parts[4])) ((SimpleGoal)goal).RecordProgress();
-                    }
                     else if (parts[0] == "EternalGoal")
-                    {
                         goal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
-                    }
+                    else if (parts[0] == "ChecklistGoal")
+                        goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]));
                     else if (parts[0] == "NegativeGoal")
-                    {
                         goal = new NegativeGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]));
-                    }
 
                     if (goal != null)
                     {
+                        goal.LoadState(parts);
                         goals.Add(goal);
                     }
                 }
@@ -64,36 +56,25 @@ public class QuestManager
         }
     }
 
-
-    public void AddGoal(Goal goal)
-    {
-        goals.Add(goal);
-    }
+    public void AddGoal(Goal goal) => goals.Add(goal);
 
     public void RecordEvent(string goalName)
     {
         Goal goal = goals.Find(g => g.Name == goalName);
         if (goal != null)
         {
+            int previousPoints = goal.EarnedPoints; // Track previous points
             goal.RecordProgress();
-            points += goal.Points;
+            int pointsEarned = goal.EarnedPoints - previousPoints; // Get newly earned points
 
-            if (goal.IsComplete())
-            {
-                Console.WriteLine($"Congratulations! '{goal.Name}' is complete. You earned {goal.Points} points!");
-            }
-            else
-            {
-                Console.WriteLine($"Progress recorded for '{goal.Name}'. You earned {goal.Points} points.");
-            }
+            totalPoints += pointsEarned; // Only add the new points
+            Console.WriteLine($"Progress recorded for '{goal.Name}'. You earned {pointsEarned} points.");
         }
         else
         {
             Console.WriteLine("Goal not found.");
         }
     }
-
-
 
     public void ListGoals()
     {
@@ -102,36 +83,14 @@ public class QuestManager
             Console.WriteLine("No goals available.");
             return;
         }
-
         Console.WriteLine("Your Goals:");
-        for (int i = 0; i < goals.Count; i++)
-        {
-            Goal goal = goals[i];
-            string status = goal.IsComplete() ? "[✓] Completed" : "[ ] In Progress";
-
-            // Handle negative goals separately
-            if (goal is NegativeGoal)
-            {
-                status = "[!] Negative Goal";
-            }
-
-            Console.WriteLine($"{i + 1}. {goal.Name} - {goal.Description} {status}");
-        }
-    }
-
-    public int GetAccumulatedPoints()
-    {
-        int accumulatedPoints = 0;
         foreach (Goal goal in goals)
         {
-            accumulatedPoints += goal.EarnedPoints;
+            string status = goal.IsComplete() ? "[✓] Completed" : "[ ] In Progress";
+            Console.WriteLine($"{goal.Name} - {goal.Description} {status}");
         }
-        return accumulatedPoints;
+        Console.WriteLine($"You have {totalPoints} points.");
     }
 
-    public int GetPoints()
-    {
-        return points;
-    }
-
+    public int GetAccumulatedPoints() => totalPoints;
 }

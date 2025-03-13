@@ -1,9 +1,34 @@
 public class SimpleGoal : Goal
 {
-    private bool completed;
-    public SimpleGoal(string name, string description, int points)
-        : base(name, description, points) { completed = false; }
-    public override void RecordProgress() { completed = true; }
-    public override bool IsComplete() => completed;
-    public override string GetSaveString() => $"SimpleGoal|{Name}|{Description}|{Points}|{completed}";
+    private bool isComplete;
+
+    public SimpleGoal(string name, string description, int points) : base(name, description, points)
+    {
+        isComplete = false;
+    }
+
+    public override string GetSaveString()
+    {
+        return $"SimpleGoal|{Name}|{Description}|{EarnedPoints}|{isComplete}";
+    }
+
+    public override void RecordProgress()
+    {
+        if (!isComplete)
+        {
+            isComplete = true;
+            EarnedPoints += 10; // Example: Earn 10 points when completed
+        }
+    }
+
+    public override bool IsComplete() => isComplete;
+
+    public override void LoadState(string[] parts)
+    {
+        base.LoadState(parts);
+        if (parts.Length > 4)
+        {
+            isComplete = bool.Parse(parts[4]); // Restore completion status
+        }
+    }
 }

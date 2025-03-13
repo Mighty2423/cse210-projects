@@ -1,3 +1,5 @@
-1000
+1025
 SimpleGoal|Run Marathon|Complete a marathon|1000|True
-EternalGoal|Scripture Study|Read scriptures daily|100
+EternalGoal|Scripture Study|Read scriptures daily|105
+NegativeGoal|Watch Too Much TV|Limit excessive TV|70|-20
+ChecklistGoal|Temple Attendance|Attend 10 times|50|10|1
