@@ -1,4 +1,4 @@
-class ChecklistGoal : Goal
+public class ChecklistGoal : Goal
 {
     private int target;
     private int progress;
@@ -24,7 +24,6 @@ class ChecklistGoal : Goal
     {
         progress = value;
     }
-
 
     public override string GetSaveString()
     {

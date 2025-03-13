@@ -1,62 +1,69 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
+
 
 public class QuestManager
 {
     private List<Goal> goals = new List<Goal>();
-    private string filePath = "goals.txt"; // File path for saving goals
+    private int points = 0;
+    private string filePath = "goals.txt";
 
     public void SaveGoals()
     {
-        List<string> lines = new List<string>();
-        foreach (Goal goal in goals)
+        using (StreamWriter writer = new StreamWriter("goals.txt"))
         {
-            lines.Add(goal.GetSaveString());
+            writer.WriteLine(points); // ✅ Save points to file
+
+            foreach (Goal goal in goals)
+            {
+                writer.WriteLine(goal.GetSaveString());
+            }
         }
-        File.WriteAllLines(filePath, lines);
+        Console.WriteLine("Goals saved successfully!");
     }
+
 
     public void LoadGoals()
     {
-        if (!File.Exists(filePath))
-            return;
-
-        goals.Clear();
-
-        string[] lines = File.ReadAllLines(filePath);
-        foreach (string line in lines)
+        if (File.Exists("goals.txt"))
         {
-            string[] parts = line.Split('|');
-            string type = parts[0];
-            string name = parts[1];
-            string description = parts[2];
-            int points = int.Parse(parts[3]);
+            goals.Clear();
+            using (StreamReader reader = new StreamReader("goals.txt"))
+            {
+                points = int.Parse(reader.ReadLine());
 
-            if (type == "SimpleGoal")
-            {
-                bool completed = bool.Parse(parts[4]);
-                SimpleGoal goal = new SimpleGoal(name, description, points);
-                if (completed)
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    goal.RecordProgress();
+                    string[] parts = line.Split('|');
+                    Goal goal = null;
+
+                    if (parts[0] == "SimpleGoal")
+                    {
+                        goal = new SimpleGoal(parts[1], parts[2], int.Parse(parts[3]));
+                        if (bool.Parse(parts[4])) ((SimpleGoal)goal).RecordProgress();
+                    }
+                    else if (parts[0] == "EternalGoal")
+                    {
+                        goal = new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
+                    }
+                    else if (parts[0] == "NegativeGoal")
+                    {
+                        goal = new NegativeGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]));
+                    }
+
+                    if (goal != null)
+                    {
+                        goals.Add(goal);
+                    }
                 }
-                goals.Add(goal);
             }
-            else if (type == "EternalGoal")
-            {
-                goals.Add(new EternalGoal(name, description, points));
-            }
-            else if (type == "ChecklistGoal")
-            {
-                int target = int.Parse(parts[4]);
-                int progress = int.Parse(parts[5]);
-                ChecklistGoal goal = new ChecklistGoal(name, description, points, target);
-                goal.SetProgress(progress);
-                goals.Add(goal);
-            }
+            Console.WriteLine("Goals loaded successfully!");
+        }
+        else
+        {
+            Console.WriteLine("No saved goals found.");
         }
     }
+
 
     public void AddGoal(Goal goal)
     {
@@ -65,11 +72,20 @@ public class QuestManager
 
     public void RecordEvent(string goalName)
     {
-        Goal goal = goals.Find(g => g.Name.Equals(goalName, StringComparison.OrdinalIgnoreCase));
+        Goal goal = goals.Find(g => g.Name == goalName);
         if (goal != null)
         {
             goal.RecordProgress();
-            Console.WriteLine($"Progress recorded for '{goal.Name}'.");
+            points += goal.Points;
+
+            if (goal.IsComplete())
+            {
+                Console.WriteLine($"Congratulations! '{goal.Name}' is complete. You earned {goal.Points} points!");
+            }
+            else
+            {
+                Console.WriteLine($"Progress recorded for '{goal.Name}'. You earned {goal.Points} points.");
+            }
         }
         else
         {
@@ -77,7 +93,9 @@ public class QuestManager
         }
     }
 
-    public void DisplayGoals()
+
+
+    public void ListGoals()
     {
         if (goals.Count == 0)
         {
@@ -85,9 +103,35 @@ public class QuestManager
             return;
         }
 
-        foreach (Goal goal in goals)
+        Console.WriteLine("Your Goals:");
+        for (int i = 0; i < goals.Count; i++)
         {
-            Console.WriteLine($"{goal.Name} - {goal.Description} [{(goal.IsComplete() ? "Completed" : "In Progress")}]");
+            Goal goal = goals[i];
+            string status = goal.IsComplete() ? "[✓] Completed" : "[ ] In Progress";
+
+            // Handle negative goals separately
+            if (goal is NegativeGoal)
+            {
+                status = "[!] Negative Goal";
+            }
+
+            Console.WriteLine($"{i + 1}. {goal.Name} - {goal.Description} {status}");
         }
     }
+
+    public int GetAccumulatedPoints()
+    {
+        int accumulatedPoints = 0;
+        foreach (Goal goal in goals)
+        {
+            accumulatedPoints += goal.EarnedPoints;
+        }
+        return accumulatedPoints;
+    }
+
+    public int GetPoints()
+    {
+        return points;
+    }
+
 }

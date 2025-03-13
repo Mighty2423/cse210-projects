@@ -1,59 +1,100 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        QuestManager questManager = new QuestManager();
-        questManager.LoadGoals();
+        string menuSelected = "";
+        QuestManager goals = new QuestManager();
 
-        while (true)
+        while (menuSelected != "6")
         {
-            Console.WriteLine("1. Add Goal");
-            Console.WriteLine("2. Record Progress");
-            Console.WriteLine("3. Show Goals");
-            Console.WriteLine("4. Save & Exit");
-            Console.Write("Choose an option: ");
-            string choice = Console.ReadLine();
+            int points = goals.GetAccumulatedPoints();
+            Console.WriteLine($"You have {points} points.\n");
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("  1. Create New Goal");
+            Console.WriteLine("  2. List Goals");
+            Console.WriteLine("  3. Save Goals");
+            Console.WriteLine("  4. Load Goals");
+            Console.WriteLine("  5. Record Event");
+            Console.WriteLine("  6. Quit");
+            Console.Write("Select a choice from the menu: ");
+            menuSelected = Console.ReadLine();
 
-            if (choice == "1")
+            switch (menuSelected)
             {
-                Console.Write("Goal Name: ");
-                string name = Console.ReadLine();
-                Console.Write("Description: ");
-                string desc = Console.ReadLine();
-                Console.Write("Points: ");
-                int points = int.Parse(Console.ReadLine());
-                Console.WriteLine("Select type: (1) Simple (2) Eternal (3) Checklist");
-                int type = int.Parse(Console.ReadLine());
+                case "1":
+                    Console.WriteLine("The Types of Goals are: ");
+                    Console.WriteLine("  1. Simple Goal");
+                    Console.WriteLine("  2. Eternal Goal");
+                    Console.WriteLine("  3. Checklist Goal");
+                    Console.WriteLine("  4. Negative Goal");
+                    Console.Write("Which type of goal would you like to create? ");
+                    string goalType = Console.ReadLine();
 
-                if (type == 1)
-                    questManager.AddGoal(new SimpleGoal(name, desc, points));
-                else if (type == 2)
-                    questManager.AddGoal(new EternalGoal(name, desc, points));
-                else if (type == 3)
-                {
-                    Console.Write("Target count: ");
-                    int target = int.Parse(Console.ReadLine());
-                    questManager.AddGoal(new ChecklistGoal(name, desc, points, target));
-                }
-            }
-            else if (choice == "2")
-            {
-                Console.Write("Enter goal name to record progress: ");
-                string goalName = Console.ReadLine();
-                questManager.RecordEvent(goalName);
-            }
-            else if (choice == "3")
-            {
-                questManager.DisplayGoals();
-            }
-            else if (choice == "4")
-            {
-                questManager.SaveGoals();
-                break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid choice, try again.");
+                    Console.Write("Goal Name: ");
+                    string name = Console.ReadLine();
+                    Console.Write("Description: ");
+                    string desc = Console.ReadLine();
+                    Console.Write("Points: ");
+                    int pointsValue = int.Parse(Console.ReadLine());
+                    
+                    
+
+                    switch (goalType)
+                    {
+                        case "1":
+                            goals.AddGoal(new SimpleGoal(name, desc, pointsValue));
+                            break;
+
+                        case "2":
+                            goals.AddGoal(new EternalGoal(name, desc, pointsValue));
+                            break;
+
+                        case "3":
+                            Console.Write("Target count: ");
+                            int target = int.Parse(Console.ReadLine());
+                            goals.AddGoal(new ChecklistGoal(name, desc, pointsValue, target));
+                            break;
+
+                        case "4": 
+                            Console.Write("Penalty: ");
+                            int penalty = int.Parse(Console.ReadLine());
+                            goals.AddGoal(new NegativeGoal(name, desc, pointsValue, penalty));
+                            break;
+
+                        default:
+                            Console.WriteLine("Invalid goal type. Please try again.");
+                            break;
+                    }
+
+                    break;
+                case "2":
+                    goals.ListGoals();
+                    break;
+                case "3":
+                    goals.SaveGoals();
+                    break;
+                case "4":
+                    goals.LoadGoals();
+                    break;
+                case "5":
+                    Console.Write("Enter goal name to record progress: ");
+                    string goalName = Console.ReadLine();
+                    goals.RecordEvent(goalName);
+
+                    Console.WriteLine($"You have {goals.GetAccumulatedPoints()} points.");
+                    break;
+
+
+                case "6":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Console.WriteLine("Please select a valid number from the menu options.");
+                    break;
             }
         }
     }

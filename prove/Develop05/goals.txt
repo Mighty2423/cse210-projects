@@ -1,3 +1,3 @@
-SimpleGoal|Run marathon|marthon|1000|False
-EternalGoal|Read Daily|Read for 30 minutes|10
-ChecklistGoal|Workout|Complete 10 workouts|20|10|1
+1000
+SimpleGoal|Run Marathon|Complete a marathon|1000|True
+EternalGoal|Scripture Study|Read scriptures daily|100
