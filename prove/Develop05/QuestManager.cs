@@ -1,14 +1,18 @@
 public class QuestManager
 {
+    // Fields
     private List<Goal> goals = new List<Goal>();
     private string filePath = "goals.txt";
     private static int totalPoints = 0;
 
+
+    // add points to the total points
     public void AddPoints(int pointsToAdd)
     {
         totalPoints += pointsToAdd;
     }
 
+    // save the goals to a file
     public void SaveGoals()
     {
         using (StreamWriter writer = new StreamWriter(filePath))
@@ -23,6 +27,7 @@ public class QuestManager
         Console.WriteLine($"You have {totalPoints} points.\n");
     }
 
+    // load the goals from a file
     public void LoadGoals()
     {
         if (File.Exists(filePath))
@@ -61,8 +66,10 @@ public class QuestManager
         }
     }
 
+    // add a goal to the list of goals
     public void AddGoal(Goal goal) => goals.Add(goal);
 
+    // record progress for a goal
     public void RecordEvent(string goalName)
     {
         Goal goal = goals.Find(g => g.Name.ToLower() == goalName.ToLower());
@@ -80,14 +87,16 @@ public class QuestManager
         }
     }
 
-
+    // list all goals
     public void ListGoals()
     {
+        // Check if there are no goals
         if (goals.Count == 0)
         { 
             Console.WriteLine("No goals available.");
             return;
         }
+        // List all goals
         Console.WriteLine("Your Goals:");
         foreach (Goal goal in goals)
         {
@@ -97,5 +106,6 @@ public class QuestManager
         Console.WriteLine($"You have {totalPoints} points.");
     }
 
+    // get the total points
     public int GetAccumulatedPoints() => totalPoints;
 }

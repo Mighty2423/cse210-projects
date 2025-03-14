@@ -6,9 +6,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        //menu loop
         string menuSelected = "";
+        //create a new instance of the QuestManager class
+        //of the list to interact with the goals created like adding, listing, saving, loading, and recording events
         QuestManager goals = new QuestManager();
-
         while (menuSelected != "6")
         {
             int points = goals.GetAccumulatedPoints();
@@ -24,6 +26,7 @@ class Program
             Console.Write("Select a choice from the menu: ");
             menuSelected = Console.ReadLine();
 
+            //menu options to types of goals
             switch (menuSelected)
             {
                 case "1":
@@ -35,6 +38,7 @@ class Program
                     Console.Write("Which type of goal would you like to create? ");
                     string goalType = Console.ReadLine();
 
+                    //create a new goal based on the type selected
                     Console.Write("Goal Name: ");
                     string name = Console.ReadLine();
                     Console.Write("Description: ");
@@ -42,6 +46,7 @@ class Program
                     Console.Write("Points: ");
                     int pointsValue = int.Parse(Console.ReadLine());
 
+                    //switch statement to create a new goal based on the type selected
                     switch (goalType)
                     {
                         case "1":
