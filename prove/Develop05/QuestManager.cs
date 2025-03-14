@@ -4,11 +4,16 @@ public class QuestManager
     private string filePath = "goals.txt";
     private static int totalPoints = 0;
 
+    public void AddPoints(int pointsToAdd)
+    {
+        totalPoints += pointsToAdd;
+    }
+
     public void SaveGoals()
     {
         using (StreamWriter writer = new StreamWriter(filePath))
         {
-            writer.WriteLine(totalPoints); // Save total accumulated points
+            writer.WriteLine(totalPoints); 
             foreach (Goal goal in goals)
             {
                 writer.WriteLine(goal.GetSaveString());
@@ -60,15 +65,14 @@ public class QuestManager
 
     public void RecordEvent(string goalName)
     {
-        Goal goal = goals.Find(g => g.Name == goalName);
+        Goal goal = goals.Find(g => g.Name.ToLower() == goalName.ToLower());
         if (goal != null)
         {
-            int previousPoints = goal.EarnedPoints; // Track previous points
+            int previousPoints = totalPoints; // Store previous points before update
             goal.RecordProgress();
-            int pointsEarned = goal.EarnedPoints - previousPoints; // Get newly earned points
-
-            totalPoints += pointsEarned; // Only add the new points
-            Console.WriteLine($"Progress recorded for '{goal.Name}'. You earned {pointsEarned} points.");
+            totalPoints += goal.EarnedPoints; // Ensure points accumulate
+            Console.WriteLine($"Progress recorded for '{goal.Name}'.");
+            Console.WriteLine($"Points updated: {previousPoints} → {totalPoints}");
         }
         else
         {
@@ -76,10 +80,11 @@ public class QuestManager
         }
     }
 
+
     public void ListGoals()
     {
         if (goals.Count == 0)
-        {
+        { 
             Console.WriteLine("No goals available.");
             return;
         }

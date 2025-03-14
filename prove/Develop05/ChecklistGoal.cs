@@ -16,9 +16,14 @@ public class ChecklistGoal : Goal
         if (progress < target)
         {
             progress++;
-            EarnedPoints += Points;  // Accumulate points for each progress step
+            EarnedPoints += Points;
+            QuestManager manager = new QuestManager();
+            manager.AddPoints(Points);
         }
     }
+
+
+
 
     public override bool IsComplete()
     {
