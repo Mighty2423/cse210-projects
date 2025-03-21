@@ -1,28 +1,34 @@
 
 public class Video
 {
-    public string Title { get; }
-    public string Director { get; }
-    private List<Comment> comments = new List<Comment>();
+    private string _title;
+    private string _director;
+    private List<Comment> _comments = new List<Comment>();
 
+    // Constructor
     public Video(string title, string director)
     {
-        Title = title;
-        Director = director;
+        _title = title;
+        _director = director;
     }
 
+    // Getters (Encapsulation)
+    public string GetTitle() => _title;
+    public string GetDirector() => _director;
+
+    // Comment management
     public void AddComment(Comment comment)
     {
-        comments.Add(comment);
+        _comments.Add(comment);
+    }
+
+    public List<Comment> GetComments()
+    {
+        return _comments;
     }
 
     public int GetCommentCount()
     {
-        return comments.Count;
-    }
-    
-    public List<Comment> GetComment()
-    {
-        return comments;
+        return _comments.Count;
     }
 }

@@ -1,12 +1,14 @@
-
 public class Comment
 {
-    public string Author { get; set; }
-    public string Text { get; set; }
+    private string _author;
+    private string _text;
 
     public Comment(string author, string text)
     {
-        Author = author;
-        Text = text;
+        _author = author;
+        _text = text;
     }
+
+    public string GetAuthor() => _author;
+    public string GetText() => _text;
 }
