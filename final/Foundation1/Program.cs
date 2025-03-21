@@ -5,8 +5,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        // Created a list of videos
         List<Video> videos = new List<Video>();
-
+        // Created a video object and added comments to it
         Video _video = new Video("Sintel", "Durian");
         _video.AddComment(new Comment("Alice", "I love this movie!"));
         _video.AddComment(new Comment("Bob", "I hate this movie!"));
@@ -17,7 +18,8 @@ class Program
         _video2.AddComment(new Comment("David", "I hate this movie!"));
         videos.Add(_video2);
 
-
+        // Display the videos and their comments for each video and commentor with each text in
+        // a foreach loop
         while (true)
         {
             foreach (var video in videos)
