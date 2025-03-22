@@ -1,11 +1,3 @@
-using System;
-using System.Collections.Generic;
-
-class Program
-{
-    static void Main(string[] args)
-    {
-      // Create address and customer
         Address address1 = new Address("123 Elm St", "New York", "NY", "USA");
         Customer customer1 = new Customer("John Doe", address1);
 
@@ -45,23 +37,3 @@ class Program
         order3.AddProduct(product5);
         order3.AddProduct(product6);
         order3.AddOrdernumber(3);
-
-
-        // Create a list of orders
-        List<Order> orders = new List<Order> { order1, order2, order3 };
-
-        // Print order details using the extracted methods
-        foreach (var order in orders)
-        {
-          order.PrintShippingLabel();
-          order.PrintOrderDetails();
-        }
-      }
-}
-
-
-
-
-
-
-

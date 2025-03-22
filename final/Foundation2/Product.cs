@@ -16,11 +16,6 @@ class Product
         _currentcytype = currentcytype;
     }
 
-    public string GetProductsName()
-    {
-        return _name;
-    }
-
     public int GetProductID()
     {
         return _productID;
@@ -28,7 +23,27 @@ class Product
 
     public string GetCurrencyType()
     {
-        return _currentcytype;
+        if (_currentcytype == "USD")
+        {
+            return "USD";
+        }
+        else if (_currentcytype == "GBP")
+        {
+            return "GBP";
+        }
+        else if (_currentcytype == "RUB")
+        {
+            return "RUB";
+        }
+        else
+        {
+            return "Invalid Currency";
+        }
+    }
+
+    public string GetProductsName()
+    {
+        return _name;
     }
 
     public double GetPrice()
@@ -51,4 +66,8 @@ class Product
         return _quantity;
     }
 
+    public string GetName()
+    {
+        return _name;
+    }
 }

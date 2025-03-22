@@ -1,4 +1,3 @@
-
 class Address
 {
     private string _street;
@@ -16,19 +15,16 @@ class Address
 
     public bool IsInUSA()
     {
-        _country = "USA";
         return _country == "USA";
     }
 
     public bool IsInUSSR()
     {
-        _country = "USSR";
         return _country == "USSR";
     }
 
     public bool IsInUK()
     {
-        _country = "UK";
         return _country == "UK";
     }
 
