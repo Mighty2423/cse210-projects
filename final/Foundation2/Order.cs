@@ -54,10 +54,6 @@ class Order
     // New method: Prints shipping label
     public void PrintShippingLabel()
     {
-        Console.WriteLine("\n========================");
-        Console.WriteLine("     SHIPPING LABEL");
-        Console.WriteLine("========================");
-
         if (_customer.GetAddress().Contains("USA"))
         {
             Console.WriteLine("Shipping to USA");
@@ -74,9 +70,12 @@ class Order
         {
             Console.WriteLine("Invalid Address");
         }
+        Console.WriteLine("\n========================");
+        Console.WriteLine("     SHIPPING LABEL");
+        Console.WriteLine("========================");
 
-        Console.WriteLine($"Shipping Details: {GetCustomerAddress()}");
         Console.WriteLine($"Customer Name: {GetCustomerName()}");
+        Console.WriteLine($"Shipping Details: {GetCustomerAddress()}");
     }
 
     // New method: Prints order details
