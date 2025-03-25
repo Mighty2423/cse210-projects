@@ -12,10 +12,17 @@ class Program
 
         foreach (Event e in events)
         {
+            // Simplely display the event type
+            Console.WriteLine($"Event Type: {e.GetType().Name}/n");
+            Console.WriteLine();
+
+            // Display the event details using the methods of the Event class
             Console.WriteLine(e.GetFullDetails());
             Console.WriteLine();
+            // Display the event details using the methods of the Event class
             Console.WriteLine(e.GetShortDescription());
             Console.WriteLine();
+            // Display the event details using the methods of the Event class
             Console.WriteLine(e.GetStandardDetails());
             Console.WriteLine();
             Console.WriteLine();

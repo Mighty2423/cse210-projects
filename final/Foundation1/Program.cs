@@ -30,7 +30,7 @@ class Program
                 Console.WriteLine("Comments section:");
                 foreach (var comment in video.GetComments())
                 {
-                    Console.WriteLine($"- {comment.GetAuthor()}: {comment.GetText()}");
+                    Console.WriteLine($"- {comment.GetCommentAuthor()}: {comment.GetText()}");
                 }
             } break;
         }

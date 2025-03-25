@@ -16,8 +16,14 @@ public class Comment
     }
 
     // Getters (Encapsulation)
-    // Getters for author
-    public string GetAuthor() => _author;
+    // The '=>' syntax is a lambda expression that defines a method returning _author
+    // without needing a full method body.
+    // This is a shorthand way to write a method that returns a single value.
+    // It is equivalent to writing a method with a return statement.
+    // The method returns the value of the private field _author.
+    // This is a common pattern in C# to provide access to private fields while keeping them encapsulated.
+    // The method is public, meaning it can be accessed from outside the class.
+    public string GetCommentAuthor() => _author;
     // Getters for text
     public string GetText() => _text;
 }
