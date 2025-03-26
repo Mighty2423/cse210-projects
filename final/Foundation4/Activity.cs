@@ -18,9 +18,9 @@ public abstract class Activity
         return _time;
     }
 
-   public virtual string GetSummaryofactvity()
+   public virtual string GetSummaryOfActivity()
     {
-        return $"Date: {_date}, Duration: {_time} minutes";
+        return "Activity summary not available.";
     }
     public double GetDistanceInKilometers()
     {

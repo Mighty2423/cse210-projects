@@ -23,8 +23,8 @@ class Running : Activity
     return GetDuration() / _distance;
     }
 
-    public override string GetSummaryofactvity()
+    public override string GetSummaryOfActivity()
     {
-        return $"{base.GetSummaryofactvity()} -Time lenght {GetDuration} - Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min/mile";
+        return $"Time length: {GetDuration()} minutes - Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min/mile";
     }
 }

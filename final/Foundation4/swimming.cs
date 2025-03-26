@@ -27,4 +27,9 @@ class Swimming : Activity
     {
         return GetTime() / 60.0 / GetDistance(); // pace in min/km
     }
+
+    public override string GetSummaryOfActivity()
+    {
+        return $"Time length: {GetTime()} minutes - Distance: {GetDistance()} km, Speed: {GetSpeed()} km/h, Pace: {GetPace()} min/km";
+    }
 }

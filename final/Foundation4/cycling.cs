@@ -22,4 +22,9 @@ class Cycling : Activity
     {
         return _speed * (Time / 60.0);
     }
+
+    public override string GetSummaryOfActivity()
+    {
+        return $"Time length: {Time} minutes - Distance: {GetDistance()} miles, Speed: {GetSpeed()} mph, Pace: {GetPace()} min/mile";
+    }
 }
