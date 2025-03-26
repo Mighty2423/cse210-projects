@@ -1,4 +1,4 @@
-public class Address
+class Address
 {
     // Fields to store address components
     // These fields are private to encapsulate the data
