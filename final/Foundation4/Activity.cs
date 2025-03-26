@@ -1,7 +1,7 @@
 public abstract class Activity
 {
     private string _date;
-    private int _time; // in minutes
+    public int _time { get; private set; } // in minutes
 
     public Activity(string date, int time)
     {
@@ -12,9 +12,6 @@ public abstract class Activity
     public abstract double GetDistance(); // in miles
     public abstract double GetSpeed(); // in mph
     public abstract double GetPace(); // in min/mile
-
-
-    
 
     public int GetDuration()
     {

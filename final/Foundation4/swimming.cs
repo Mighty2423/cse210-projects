@@ -15,11 +15,16 @@ class Swimming : Activity
 
     public override double GetSpeed()
     {
-        return GetDistance() / (time / 60.0); // speed in km/h
+        return GetDistance() / (GetTime() / 60.0); // speed in km/h
+    }
+
+    protected int GetTime()
+    {
+        return _time; // Assuming 'Time' is a property or field in the base class
     }
 
     public override double GetPace()
     {
-        return (time / 60.0) / GetDistance(); // pace in min/km
+        return GetTime() / 60.0 / GetDistance(); // pace in min/km
     }
 }

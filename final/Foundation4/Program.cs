@@ -17,22 +17,20 @@ class Program
         {
                 if (activity is Running)
                 {
-                    Console.WriteLine("Running Activity:");
+                    Console.WriteLine($"Running Activity: {activity.GetSummaryOfActivity()}");
                 }
                 else if (activity is Cycling)
                 {
-                    Console.WriteLine("Cycling Activity:");
+                    Console.WriteLine($"Cycling Activity: {activity.GetSummaryOfActivity()}");
                 }
                 else if (activity is Swimming)
                 {
-                    Console.WriteLine("Swimming Activity:");
+                    Console.WriteLine($"Swimming Activity: {activity.GetSummaryOfActivity()}");
                 }
                 else
                 {
-                    Console.WriteLine("Unknown Activity:");
+                    Console.WriteLine($"Unknown Activity: {activity.GetSummaryOfActivity()}");
                 }
-            Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine(activity.GetSummaryofactvity());
         }
     }
 }
