@@ -1,8 +1,6 @@
 public abstract class Activity
 {
     // Fields
-    // Date in the format "YYYY-MM-DD"
-    private string _date;
     // Time in minutes
     public int _time; // in minutes
 
@@ -10,7 +8,6 @@ public abstract class Activity
     // Initializes the date and time fields
     public Activity(string date, int time)
     {
-        _date = date;
         _time = time;
     }
 
