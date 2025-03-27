@@ -27,6 +27,8 @@ public class Event
         _address = address;
     }
 
+    
+
     // Properties to get the event details
     // These properties are public to allow access to the event details
 
@@ -67,6 +69,7 @@ public class Event
     // This method returns a short description of the event
     public virtual string GetShortDescription()
     {
-        return $"{_title} on {_date}";
+        // Use GetType().Name to dynamically get the class name
+        return $"Type of event: {GetType().Name}, {_title} on {_date}";
     }
 }

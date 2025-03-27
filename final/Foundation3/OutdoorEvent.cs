@@ -24,7 +24,7 @@ public class OutdoorEvent : Event
     // This property is public to allow access to the weather forecast of the outdoor event
     public override string GetFullDetails()
     {
-        return $"{GetStandardDetails()}\nType: Outdoor Event\nWeather Forecast: {_weather}";
+        return $"{GetStandardDetails()} Type: Outdoor Event\nWeather Forecast: {_weather}";
     }
 }
 

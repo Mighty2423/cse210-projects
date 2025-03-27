@@ -1,7 +1,7 @@
 public abstract class Activity
 {
     private string _date;
-    public int _time { get; private set; } // in minutes
+    public int _time; // in minutes
 
     public Activity(string date, int time)
     {
